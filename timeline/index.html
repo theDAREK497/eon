@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Хронология - Мир Эон</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Хронология событий</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html" data-tooltip="Главная страница">Главная</a></li>
+                <li><a href="../factions/index.html" data-tooltip="История разных сторон" class="active">Фракции</a></li>
+                <li><a href="../timeline/index.html" data-tooltip="Хронология событий">Хронология</a></li>
+                <li><a href="../rpg/index.html" data-tooltip="Идеи для RPG">Сюжеты</a></li>
+                <li><a href="../characters/index.html" data-tooltip="Персонажи и их истории">Персонажи</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Интерактивная Хронология</h2>
+            <div class="filters">
+                <label for="event-filter">Фильтр по типу событий:</label>
+                <select id="event-filter">
+                    <option value="all">Все события</option>
+                    <option value="political">Политические события</option>
+                    <option value="scientific">Научные события</option>
+                    <option value="catastrophe">Катастрофы</option>
+                </select>
+            </div>
+            <div class="timeline">
+                <ul>
+                    <li data-year="2012" class="year">2012</li>
+                    <li data-year="2013" class="year">2013</li>
+                    <li data-year="2014" class="year">2014</li>
+                    <li data-year="2015" class="year">2015</li>
+                    <li data-year="2016" class="year">2016</li>
+                    <li data-year="2017" class="year">2017</li>
+                    <li data-year="2018" class="year">2018</li>
+                    <li data-year="2019" class="year">2019</li>
+                    <li data-year="2020" class="year">2020</li>
+                    <li data-year="2021" class="year">2021</li>
+                    <li data-year="2022" class="year">2022</li>
+                    <li data-year="2023" class="year">2023</li>
+                    <li data-year="2024" class="year">2024</li>
+                    <li data-year="2025" class="year">2025</li>
+                </ul>
+            </div>
+            <div id="events-container">
+                <h3>Выберите год на шкале, чтобы увидеть события</h3>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Мир Эон. Все права защищены.</p>
+    </footer>
+
+    <script src="../scripts.js"></script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
