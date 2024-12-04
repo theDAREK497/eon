@@ -210,3 +210,21 @@ ul.list {
     border-color: #dc3545;
     background-color: #fbe7e7;
 }
+
+#mapCanvas {
+    display: block;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    width: 80%;
+    height: 500px;
+}
+
+#info-panel {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#info-list {
+    list-style: none;
+    padding: 0;
+}

@@ -1,0 +1,34 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивная Карта - Кристаллы Эон</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <h1>Интерактивная Карта Распространения</h1>
+        <div class="controls">
+            <label for="date-picker">Выберите дату:</label>
+            <input type="month" id="date-picker" />
+            <button id="reset-button">Сбросить изменения</button>
+        </div>
+    </header>
+    
+    <main>
+        <canvas id="mapCanvas"></canvas>
+        <div id="info-panel">
+            <h2>Информация</h2>
+            <p>Наведите курсор на область или страну, чтобы увидеть подробности.</p>
+            <ul id="info-list"></ul>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Мир Эон. Все права защищены.</p>
+    </footer>
+
+    <script src="../scripts.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

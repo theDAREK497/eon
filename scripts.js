@@ -1,3 +1,20 @@
+// Функция для загрузки HTML-файла в элемент
+function loadHTML(filePath, elementId) {
+    fetch(filePath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Ошибка загрузки ${filePath}: ${response.statusText}`);
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById(elementId).innerHTML = data;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
+
 document.querySelectorAll('nav ul li a').forEach(link => {
     link.addEventListener('mouseenter', () => {
         const tooltip = document.createElement('div');
@@ -29,55 +46,58 @@ document.querySelectorAll('nav ul li a').forEach(link => {
             document.getElementById(tabId).classList.add("active");
         });
     });
+});
 
-    document.addEventListener("DOMContentLoaded", () => {
-        const years = document.querySelectorAll(".year");
-        const events = document.querySelectorAll(".event");
-        const filters = document.querySelectorAll(".filters input");
+document.addEventListener("DOMContentLoaded", () => {
+    const years = document.querySelectorAll(".year");
+    const events = document.querySelectorAll(".event");
+    const filters = document.querySelectorAll(".filters input");
 
-        // Функция для отображения событий выбранного года
-        function showEventsByYear(selectedYear) {
-            events.forEach(event => {
-                event.classList.remove("active");
-                if (event.dataset.year === selectedYear) {
-                    event.classList.add("active");
-                }
-            });
-        }
-
-        // Обновление фильтров
-        function applyFilters() {
-            const activeFilters = Array.from(filters)
-                .filter(filter => filter.checked)
-                .map(filter => filter.dataset.filter);
-
-            events.forEach(event => {
-                const eventType = event.dataset.type;
-                if (activeFilters.includes(eventType)) {
-                    event.style.display = "block";
-                } else {
-                    event.style.display = "none";
-                }
-            });
-        }
-
-        // Клик на год
-        years.forEach(year => {
-            year.addEventListener("click", () => {
-                years.forEach(btn => btn.classList.remove("active"));
-                year.classList.add("active");
-                showEventsByYear(year.dataset.year);
-            });
+    // Функция для отображения событий выбранного года
+    function showEventsByYear(selectedYear) {
+        events.forEach(event => {
+            event.classList.remove("active");
+            if (event.dataset.year === selectedYear) {
+                event.classList.add("active");
+            }
         });
+    }
 
-        // Изменение фильтров
-        filters.forEach(filter => {
-            filter.addEventListener("change", applyFilters);
+    // Обновление фильтров
+    function applyFilters() {
+        const activeFilters = Array.from(filters)
+            .filter(filter => filter.checked)
+            .map(filter => filter.dataset.filter);
+
+        events.forEach(event => {
+            const eventType = event.dataset.type;
+            if (activeFilters.includes(eventType)) {
+                event.style.display = "block";
+            } else {
+                event.style.display = "none";
+            }
         });
+    }
 
-        // Инициализация
-        years[0].click();
-        applyFilters();
+    // Клик на год
+    years.forEach(year => {
+        year.addEventListener("click", () => {
+            years.forEach(btn => btn.classList.remove("active"));
+            year.classList.add("active");
+            showEventsByYear(year.dataset.year);
+        });
     });
 
+    // Изменение фильтров
+    filters.forEach(filter => {
+        filter.addEventListener("change", applyFilters);
+    });
+
+    // Инициализация
+    years[0].click();
+    applyFilters();
 });
+
+// Загрузка header и footer
+loadHTML('header.html', 'header-placeholder');
+loadHTML('footer.html', 'footer-placeholder');
