@@ -102,6 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
     applyFilters();
 
     // Загрузка header и footer
-    loadHTML('header.html', 'header-placeholder');
-    loadHTML('footer.html', 'footer-placeholder');
+    loadHTML('../header.html', 'header-placeholder');
+    loadHTML('../footer.html', 'footer-placeholder');
 });
