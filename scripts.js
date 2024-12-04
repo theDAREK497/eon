@@ -1,5 +1,10 @@
 // Функция для загрузки HTML-файла в элемент
 function loadHTML(filePath, elementId) {
+    const targetElement = document.getElementById(elementId);
+    if (!targetElement) {
+        console.error(`Элемент с ID "${elementId}" не найден в DOM.`);
+        return;
+    }
     fetch(filePath)
         .then(response => {
             if (!response.ok) {
@@ -8,26 +13,29 @@ function loadHTML(filePath, elementId) {
             return response.text();
         })
         .then(data => {
-            document.getElementById(elementId).innerHTML = data;
+            targetElement.innerHTML = data;
         })
         .catch(error => {
             console.error(error);
         });
 }
 
-document.querySelectorAll('nav ul li a').forEach(link => {
-    link.addEventListener('mouseenter', () => {
-        const tooltip = document.createElement('div');
-        tooltip.className = 'tooltip';
-        tooltip.textContent = link.dataset.tooltip;
-        document.body.appendChild(tooltip);
-        const rect = link.getBoundingClientRect();
-        tooltip.style.left = `${rect.left + rect.width / 2 - tooltip.offsetWidth / 2}px`;
-        tooltip.style.top = `${rect.bottom + 5}px`;
-    });
+document.addEventListener("DOMContentLoaded", () => {
+    // Инициализация тултипов
+    document.querySelectorAll('nav ul li a').forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'tooltip';
+            tooltip.textContent = link.dataset.tooltip || "Нет данных";
+            document.body.appendChild(tooltip);
+            const rect = link.getBoundingClientRect();
+            tooltip.style.left = `${rect.left + rect.width / 2 - tooltip.offsetWidth / 2}px`;
+            tooltip.style.top = `${rect.bottom + 5}px`;
+        });
 
-    link.addEventListener('mouseleave', () => {
-        document.querySelector('.tooltip')?.remove();
+        link.addEventListener('mouseleave', () => {
+            document.querySelector('.tooltip')?.remove();
+        });
     });
 
     // Логика переключения табов
@@ -36,34 +44,46 @@ document.querySelectorAll('nav ul li a').forEach(link => {
 
     buttons.forEach(button => {
         button.addEventListener("click", () => {
-            // Сбрасываем активные состояния
             buttons.forEach(btn => btn.classList.remove("active"));
             contents.forEach(content => content.classList.remove("active"));
-
-            // Активируем текущую вкладку
             button.classList.add("active");
             const tabId = button.getAttribute("data-tab");
-            document.getElementById(tabId).classList.add("active");
+            const targetContent = document.getElementById(tabId);
+            if (targetContent) {
+                targetContent.classList.add("active");
+            } else {
+                console.warn(`Элемент с ID "${tabId}" не найден.`);
+            }
         });
     });
-});
 
-document.addEventListener("DOMContentLoaded", () => {
+    // Инициализация работы с годами и фильтрами
     const years = document.querySelectorAll(".year");
     const events = document.querySelectorAll(".event");
     const filters = document.querySelectorAll(".filters input");
 
-    // Функция для отображения событий выбранного года
-    function showEventsByYear(selectedYear) {
-        events.forEach(event => {
-            event.classList.remove("active");
-            if (event.dataset.year === selectedYear) {
-                event.classList.add("active");
-            }
+    if (years.length > 0) {
+        years.forEach(year => {
+            year.addEventListener("click", () => {
+                years.forEach(btn => btn.classList.remove("active"));
+                year.classList.add("active");
+                const selectedYear = year.dataset.year;
+                events.forEach(event => {
+                    event.classList.remove("active");
+                    if (event.dataset.year === selectedYear) {
+                        event.classList.add("active");
+                    }
+                });
+            });
         });
+
+        // Инициализация первого года
+        years[0].click();
+    } else {
+        console.warn('Элементы с классом ".year" не найдены.');
     }
 
-    // Обновление фильтров
+    // Инициализация фильтров
     function applyFilters() {
         const activeFilters = Array.from(filters)
             .filter(filter => filter.checked)
@@ -71,33 +91,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         events.forEach(event => {
             const eventType = event.dataset.type;
-            if (activeFilters.includes(eventType)) {
-                event.style.display = "block";
-            } else {
-                event.style.display = "none";
-            }
+            event.style.display = activeFilters.includes(eventType) ? "block" : "none";
         });
     }
 
-    // Клик на год
-    years.forEach(year => {
-        year.addEventListener("click", () => {
-            years.forEach(btn => btn.classList.remove("active"));
-            year.classList.add("active");
-            showEventsByYear(year.dataset.year);
-        });
-    });
-
-    // Изменение фильтров
     filters.forEach(filter => {
         filter.addEventListener("change", applyFilters);
     });
 
-    // Инициализация
-    years[0].click();
     applyFilters();
-});
 
-// Загрузка header и footer
-loadHTML('header.html', 'header-placeholder');
-loadHTML('footer.html', 'footer-placeholder');
+    // Загрузка header и footer
+    loadHTML('header.html', 'header-placeholder');
+    loadHTML('footer.html', 'footer-placeholder');
+});
