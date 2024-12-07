@@ -261,3 +261,41 @@ td:first-child {
     font-weight: bold;
     background-color: #eaeaea;
 }
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.legend-color.political {
+    background-color: #007bff;
+}
+
+.legend-color.scientific {
+    background-color: #28a745;
+}
+
+.legend-color.catastrophe {
+    background-color: #dc3545;
+}
+
+.legend-label {
+    font-weight: bold;
+}
