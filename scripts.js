@@ -37,7 +37,7 @@ function setMainMinHeight() {
         const windowHeight = window.innerHeight;
         const minHeight = windowHeight - headerHeight - footerHeight;
 
-        mainElement.style.minHeight = `${minHeight-39}px`;
+        mainElement.style.minHeight = `${minHeight - 39}px`;
     }
 }
 
@@ -49,8 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const loadPromises = [];
     if (!isHomePage) {
         loadPromises.push(loadHTML('../header.html', 'header-placeholder'));
+        loadPromises.push(loadHTML('../footer.html', 'footer-placeholder'));
     }
-    loadPromises.push(loadHTML('../footer.html', 'footer-placeholder'));
 
     // Установка минимальной высоты main после загрузки header и footer
     Promise.all(loadPromises)
