@@ -101,11 +101,13 @@ footer {
 .tab-container {
     display: flex;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .tab-button {
     flex: 1;
     padding: 10px;
+    margin-bottom: 10px;
     text-align: center;
     background-color: #333;
     color: white;
@@ -298,4 +300,62 @@ td:first-child {
 
 .legend-label {
     font-weight: bold;
+}
+
+section ol, section ul {
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+section ol li, section ul li {
+    margin-bottom: 5px;
+}
+
+.formula-container {
+    text-align: center; /* Center the formulas */
+    margin: 1em 0;     /* Add some margin */
+    display: flex;
+}
+
+.formula {
+    display: inline-block; /* Allow for better line breaks */
+    padding: 0.5em 1em;    /* Add padding */
+    background-color: #f8f8f8; /* Light gray background */
+    border-radius: 5px;    /* Rounded corners */
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    section {
+        margin-bottom: 20px;
+    }
+
+    section h2 {
+        font-size: 22px;
+    }
+
+    section h3 {
+        font-size: 18px;
+    }
+
+    section p {
+        font-size: 14px;
+    }
+
+    section ol, section ul {
+        padding-left: 15px;
+    }
+
+    section table {
+        font-size: 14px;
+    }
 }
