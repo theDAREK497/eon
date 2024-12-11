@@ -1,23 +1,28 @@
-// Функция для загрузки HTML-файла в элемент
+// Функция для загрузки HTML-файла в элемент и возврата Promise
 function loadHTML(filePath, elementId) {
-    const targetElement = document.getElementById(elementId);
-    if (!targetElement) {
-        console.error(`Элемент с ID "${elementId}" не найден в DOM.`);
-        return;
-    }
-    fetch(filePath)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Ошибка загрузки ${filePath}: ${response.statusText}`);
-            }
-            return response.text();
-        })
-        .then(data => {
-            targetElement.innerHTML = data;
-        })
-        .catch(error => {
-            console.error(error);
-        });
+    return new Promise((resolve, reject) => {
+        const targetElement = document.getElementById(elementId);
+        if (!targetElement) {
+            console.error(`Элемент с ID "${elementId}" не найден в DOM.`);
+            reject(new Error(`Элемент с ID "${elementId}" не найден в DOM.`));
+            return;
+        }
+        fetch(filePath)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Ошибка загрузки ${filePath}: ${response.statusText}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                targetElement.innerHTML = data;
+                resolve();
+            })
+            .catch(error => {
+                console.error(error);
+                reject(error);
+            });
+    });
 }
 
 // Функция для установки минимальной высоты main
@@ -38,10 +43,18 @@ function setMainMinHeight() {
 
 document.addEventListener("DOMContentLoaded", () => {
     // Установка минимальной высоты main при загрузке страницы
-    setMainMinHeight();
-
-    // Обновление минимальной высоты main при изменении размера окна
-    window.addEventListener('resize', setMainMinHeight);
+    Promise.all([
+        loadHTML('../header.html', 'header-placeholder'),
+        loadHTML('../footer.html', 'footer-placeholder')
+    ])
+    .then(() => {
+        setMainMinHeight();
+        // Обновление минимальной высоты main при изменении размера окна
+        window.addEventListener('resize', setMainMinHeight);
+    })
+    .catch(error => {
+        console.error('Ошибка при загрузке header или footer:', error);
+    });
 
     // Инициализация тултипов
     document.querySelectorAll('nav ul li a').forEach(link => {
@@ -122,8 +135,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     applyFilters();
-
-    // Загрузка header и footer
-    loadHTML('../header.html', 'header-placeholder');
-    loadHTML('../footer.html', 'footer-placeholder');
 });
