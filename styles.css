@@ -57,6 +57,10 @@ nav ul li a:hover::after {
     min-width: 80px;
 }
 
+.tooltip {
+    display: none;
+}
+
 main {
     margin-top: 20px;
     padding: 20px;

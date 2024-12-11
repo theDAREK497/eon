@@ -20,7 +20,29 @@ function loadHTML(filePath, elementId) {
         });
 }
 
+// Функция для установки минимальной высоты main
+function setMainMinHeight() {
+    const mainElement = document.querySelector('main');
+    const headerElement = document.querySelector('header');
+    const footerElement = document.querySelector('footer');
+
+    if (mainElement && headerElement && footerElement) {
+        const headerHeight = headerElement.offsetHeight;
+        const footerHeight = footerElement.offsetHeight;
+        const windowHeight = window.innerHeight;
+        const minHeight = windowHeight - headerHeight - footerHeight;
+
+        mainElement.style.minHeight = `${minHeight-39}px`;
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+    // Установка минимальной высоты main при загрузке страницы
+    setMainMinHeight();
+
+    // Обновление минимальной высоты main при изменении размера окна
+    window.addEventListener('resize', setMainMinHeight);
+
     // Инициализация тултипов
     document.querySelectorAll('nav ul li a').forEach(link => {
         link.addEventListener('mouseenter', () => {
