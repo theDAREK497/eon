@@ -42,19 +42,26 @@ function setMainMinHeight() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Установка минимальной высоты main при загрузке страницы
-    Promise.all([
-        loadHTML('../header.html', 'header-placeholder'),
-        loadHTML('../footer.html', 'footer-placeholder')
-    ])
-    .then(() => {
-        setMainMinHeight();
-        // Обновление минимальной высоты main при изменении размера окна
-        window.addEventListener('resize', setMainMinHeight);
-    })
-    .catch(error => {
-        console.error('Ошибка при загрузке header или footer:', error);
-    });
+    // Определяем, является ли текущая страница главной
+    const isHomePage = document.body.classList.contains('home-page');
+
+    // Загрузка header и footer, если это не главная страница
+    const loadPromises = [];
+    if (!isHomePage) {
+        loadPromises.push(loadHTML('../header.html', 'header-placeholder'));
+    }
+    loadPromises.push(loadHTML('../footer.html', 'footer-placeholder'));
+
+    // Установка минимальной высоты main после загрузки header и footer
+    Promise.all(loadPromises)
+        .then(() => {
+            setMainMinHeight();
+            // Обновление минимальной высоты main при изменении размера окна
+            window.addEventListener('resize', setMainMinHeight);
+        })
+        .catch(error => {
+            console.error('Ошибка при загрузке header или footer:', error);
+        });
 
     // Инициализация тултипов
     document.querySelectorAll('nav ul li a').forEach(link => {
