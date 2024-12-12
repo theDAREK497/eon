@@ -370,6 +370,7 @@ section ol li, section ul li {
     justify-content: center;
     align-items: center;
     width: 200px;
+    height: 200px;
     border-radius: 50%;
     background-color: #f0f0f0;
     margin: 20px auto;
