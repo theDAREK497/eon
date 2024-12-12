@@ -243,6 +243,10 @@ table {
     text-align: center;
 }
 
+.big-table {
+    overflow-x: scroll;
+}
+
 thead th {
     background-color: #333;
     color: white;
