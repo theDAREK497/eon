@@ -369,10 +369,9 @@ section ol li, section ul li {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px;
-    height: 100px;
+    width: 200px;
     border-radius: 50%;
-    background-color: #f0f0f0; /* Фоновый цвет кружка */
+    background-color: #f0f0f0;
     margin: 20px auto;
     overflow: hidden;
 }
