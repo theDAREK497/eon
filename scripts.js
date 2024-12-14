@@ -121,8 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Инициализация первого года
         years[0].click();
-    } else {
-        console.warn('Элементы с классом ".year" не найдены.');
     }
 
     // Инициализация фильтров
@@ -142,4 +140,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     applyFilters();
+
+
+    // Добавлен код для inner tabs
+    const innerButtons = document.querySelectorAll(".inner-tab-button");
+    const innerContents = document.querySelectorAll(".inner-tab-content");
+
+    innerButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            innerButtons.forEach(btn => btn.classList.remove("active"));
+            innerContents.forEach(content => content.classList.remove("active"));
+            button.classList.add("active");
+            const innerTabId = button.dataset.innerTab;
+            const innerTargetContent = document.getElementById(innerTabId);
+            if (innerTargetContent) {
+                innerTargetContent.classList.add("active");
+            } else {
+                console.warn(`Inner элемент с ID "${innerTabId}" не найден.`);
+            }
+        });
+    });
 });

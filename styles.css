@@ -1,3 +1,4 @@
+/* Общие стили */
 * {
     margin: 0;
     padding: 0;
@@ -10,6 +11,7 @@ body {
     line-height: 1.6;
 }
 
+/* Стили для заголовка */
 header {
     background-color: #333;
     color: white;
@@ -17,10 +19,12 @@ header {
     text-align: center;
 }
 
+/* Стили для секций */
 section {
     margin-bottom: 20px;
 }
 
+/* Стили для навигации */
 nav ul {
     display: flex;
     justify-content: center;
@@ -58,14 +62,17 @@ nav ul li a:hover::after {
 }
 
 .tooltip {
-    display: none;
+    display: none; /* Скрываем подсказку по умолчанию */
 }
 
+
+/* Стили для основного контента */
 main {
     margin-top: 20px;
     padding: 20px;
 }
 
+/* Стили для заголовков */
 h2 {
     font-size: 24px;
     margin-bottom: 10px;
@@ -76,6 +83,7 @@ h3 {
     margin-top: 10px;
 }
 
+/* Стили для статей */
 article {
     background-color: white;
     border-radius: 8px;
@@ -84,6 +92,7 @@ article {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Стили для футера */
 footer {
     text-align: center;
     margin-top: 20px;
@@ -92,6 +101,7 @@ footer {
     color: white;
 }
 
+/* Адаптивные стили для экранов с шириной менее 768px */
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column;
@@ -102,12 +112,14 @@ footer {
     }
 }
 
+/* Стили для контейнера вкладок */
 .tab-container {
     display: flex;
     margin-bottom: 20px;
     flex-wrap: wrap;
 }
 
+/* Стили для кнопок вкладок */
 .tab-button {
     flex: 1;
     padding: 10px;
@@ -130,6 +142,7 @@ footer {
     font-weight: bold;
 }
 
+/* Стили для контента вкладок */
 .tab-content {
     display: none;
     padding: 15px;
@@ -142,10 +155,13 @@ footer {
     display: block;
 }
 
+/* Стили для списков */
 ul.list {
     padding-left: 20px;
 }
 
+
+/* Стили для фильтров */
 .filters {
     margin-bottom: 20px;
     text-align: center;
@@ -156,6 +172,7 @@ ul.list {
     margin-right: 10px;
 }
 
+/* Стили для временной шкалы */
 .timeline {
     display: flex;
     justify-content: center;
@@ -182,12 +199,14 @@ ul.list {
     transition: background-color 0.3s ease;
 }
 
-.timeline ul .year:hover, .timeline ul .year.active {
+.timeline ul .year:hover,
+.timeline ul .year.active {
     background-color: #ffcc00;
     color: black;
     font-weight: bold;
 }
 
+/* Стили для контейнера событий */
 #events-container {
     margin-top: 20px;
     background: white;
@@ -196,6 +215,7 @@ ul.list {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Стили для событий */
 .event {
     padding: 10px;
     margin: 10px 0;
@@ -217,6 +237,7 @@ ul.list {
     background-color: #fbe7e7;
 }
 
+/* Стили для карты */
 #mapCanvas {
     display: block;
     margin: 20px auto;
@@ -225,6 +246,7 @@ ul.list {
     height: 500px;
 }
 
+/* Стили для информационной панели */
 #info-panel {
     text-align: center;
     margin-top: 20px;
@@ -235,6 +257,7 @@ ul.list {
     padding: 0;
 }
 
+/* Стили для таблиц */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -272,6 +295,7 @@ td:first-child {
     background-color: #eaeaea;
 }
 
+/* Стили для легенды */
 .legend {
     display: flex;
     flex-wrap: wrap;
@@ -310,30 +334,34 @@ td:first-child {
     font-weight: bold;
 }
 
-section ol, section ul {
+/* Стили для нумерованных и маркированных списков */
+section ol,
+section ul {
     margin-bottom: 15px;
     padding-left: 20px;
 }
 
-section ol li, section ul li {
+section ol li,
+section ul li {
     margin-bottom: 5px;
 }
 
+/* Стили для формул */
 .formula-container {
-    text-align: center; /* Center the formulas */
-    margin: 1em 0;     /* Add some margin */
+    text-align: center;
+    margin: 1em 0;
     display: flex;
 }
 
 .formula {
-    display: inline-block; /* Allow for better line breaks */
-    padding: 0.5em 1em;    /* Add padding */
-    background-color: #f8f8f8; /* Light gray background */
-    border-radius: 5px;    /* Rounded corners */
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+    display: inline-block;
+    padding: 0.5em 1em;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-
+/* Адаптивные стили для экранов с шириной менее 768px */
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column;
@@ -359,7 +387,8 @@ section ol li, section ul li {
         font-size: 14px;
     }
 
-    section ol, section ul {
+    section ol,
+    section ul {
         padding-left: 15px;
     }
 
@@ -368,7 +397,7 @@ section ol li, section ul li {
     }
 }
 
-/* Стилизация контейнера эмблемы */
+/* Стили для контейнера эмблемы */
 .emblem-container {
     display: flex;
     justify-content: center;
@@ -385,11 +414,11 @@ section ol li, section ul li {
 .emblem {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Чтобы эмблема полностью заполняла кружок */
+    object-fit: cover;
     border-radius: 50%;
 }
 
-/* Дополнительные стили для адаптивности */
+/* Адаптивные стили для эмблемы */
 @media (max-width: 768px) {
     .emblem-container {
         width: 80px;
@@ -402,4 +431,45 @@ section ol li, section ul li {
         width: 60px;
         height: 60px;
     }
+}
+
+/* Стили для внутренних вкладок */
+.inner-tab-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.inner-tab-button {
+    flex: 1;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.inner-tab-button:hover {
+    background-color: #555;
+}
+
+.inner-tab-button.active {
+    background-color: #ffcc00;
+    color: black;
+    font-weight: bold;
+}
+
+.inner-tab-content {
+    display: none;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.inner-tab-content.active {
+    display: block;
 }
