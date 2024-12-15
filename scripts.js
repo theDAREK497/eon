@@ -160,4 +160,37 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+    // Ссылки на кнопки переключения
+    const switchToD = document.getElementById("switch-to-d");
+    const switchToG = document.getElementById("switch-to-g");
+
+    // Ссылка на текущий элемент стилей
+    const styleLink = document.querySelector('link[rel="stylesheet"]');
+
+    // Функции переключения тем
+    function setDarkTheme() {
+        if (styleLink) {
+            styleLink.href = "stylesD.css"; // Устанавливаем темный стиль
+            localStorage.setItem("selectedStyle", "stylesD.css"); // Сохраняем в локальное хранилище
+        }
+    }
+
+    function setGreenTheme() {
+        if (styleLink) {
+            styleLink.href = "stylesG.css"; // Устанавливаем зеленый стиль
+            localStorage.setItem("selectedStyle", "stylesG.css"); // Сохраняем в локальное хранилище
+        }
+    }
+
+    // Восстановление выбранного стиля при загрузке страницы
+    const savedStyle = localStorage.getItem("selectedStyle");
+    if (savedStyle) {
+        styleLink.href = savedStyle;
+    }
+
+    // Обработчики кнопок
+    switchToD.addEventListener("click", setDarkTheme);
+    switchToG.addEventListener("click", setGreenTheme);
+
 });
