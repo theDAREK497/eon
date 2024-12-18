@@ -172,12 +172,12 @@ document.addEventListener("DOMContentLoaded", () => {
     function setDarkTheme() {
         if (styleLink) {
             const isHomePage = document.body.classList.contains('home-page');
-            if (isHomePage) {
-                styleLink.href = "stylesD.css"; // Устанавливаем темный стиль
-                localStorage.setItem("selectedStyle", "stylesD.css"); // Сохраняем в локальное хранилище
-            } else {
+            if (!isHomePage) {
                 styleLink.href = "../stylesD.css"; // Устанавливаем темный стиль
                 localStorage.setItem("selectedStyle", "../stylesD.css"); // Сохраняем в локальное хранилище
+            } else {
+                styleLink.href = "stylesD.css"; // Устанавливаем темный стиль
+                localStorage.setItem("selectedStyle", "stylesD.css"); // Сохраняем в локальное хранилище
             }
         }
     }
@@ -185,12 +185,12 @@ document.addEventListener("DOMContentLoaded", () => {
     function setGreenTheme() {
         if (styleLink) {
             const isHomePage = document.body.classList.contains('home-page');
-            if (isHomePage) {
-                styleLink.href = "stylesG.css"; // Устанавливаем зеленый стиль
-                localStorage.setItem("selectedStyle", "stylesG.css"); // Сохраняем в локальное хранилище
-            } else {
+            if (!isHomePage) {
                 styleLink.href = "../stylesG.css"; // Устанавливаем зеленый стиль
                 localStorage.setItem("selectedStyle", "../stylesG.css"); // Сохраняем в локальное хранилище
+            } else {
+                styleLink.href = "stylesG.css"; // Устанавливаем зеленый стиль
+                localStorage.setItem("selectedStyle", "stylesG.css"); // Сохраняем в локальное хранилище
             }
         }
     }
