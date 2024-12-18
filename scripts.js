@@ -171,15 +171,27 @@ document.addEventListener("DOMContentLoaded", () => {
     // Функции переключения тем
     function setDarkTheme() {
         if (styleLink) {
-            styleLink.href = "stylesD.css"; // Устанавливаем темный стиль
-            localStorage.setItem("selectedStyle", "stylesD.css"); // Сохраняем в локальное хранилище
+            const isHomePage = document.body.classList.contains('home-page');
+            if (isHomePage) {
+                styleLink.href = "stylesD.css"; // Устанавливаем темный стиль
+                localStorage.setItem("selectedStyle", "stylesD.css"); // Сохраняем в локальное хранилище
+            } else {
+                styleLink.href = "../stylesD.css"; // Устанавливаем темный стиль
+                localStorage.setItem("selectedStyle", "../stylesD.css"); // Сохраняем в локальное хранилище
+            }
         }
     }
 
     function setGreenTheme() {
         if (styleLink) {
-            styleLink.href = "stylesG.css"; // Устанавливаем зеленый стиль
-            localStorage.setItem("selectedStyle", "stylesG.css"); // Сохраняем в локальное хранилище
+            const isHomePage = document.body.classList.contains('home-page');
+            if (isHomePage) {
+                styleLink.href = "stylesG.css"; // Устанавливаем зеленый стиль
+                localStorage.setItem("selectedStyle", "stylesG.css"); // Сохраняем в локальное хранилище
+            } else {
+                styleLink.href = "../stylesG.css"; // Устанавливаем зеленый стиль
+                localStorage.setItem("selectedStyle", "../stylesG.css"); // Сохраняем в локальное хранилище
+            }
         }
     }
 
