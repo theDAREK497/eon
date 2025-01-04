@@ -1,3 +1,49 @@
+// Функция для установки куки
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+// Функция для получения значения куки
+function getCookie(name) {
+    const cookieName = name + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const cookieArray = decodedCookie.split(';');
+    for (let i = 0; i < cookieArray.length; i++) {
+        let cookie = cookieArray[i];
+        while (cookie.charAt(0) === ' ') {
+            cookie = cookie.substring(1);
+        }
+        if (cookie.indexOf(cookieName) === 0) {
+            return cookie.substring(cookieName.length, cookie.length);
+        }
+    }
+    return "";
+}
+
+// Функция для установки стиля
+function setStyle(styleName) {
+    const styleLink = document.querySelector('link[rel="stylesheet"]');
+    if (styleLink) {
+        const isHomePage = document.body.classList.contains('home-page');
+        const stylePath = isHomePage ? `${styleName}.css` : `../${styleName}.css`;
+        styleLink.href = stylePath;
+        setCookie("selectedStyle", styleName, 30); // Сохраняем стиль в куки на 30 дней
+    }
+}
+
+// Функция для установки стиля по умолчанию
+function setDefaultStyle() {
+    const savedStyle = getCookie("selectedStyle");
+    if (savedStyle) {
+        setStyle(savedStyle);
+    } else {
+        setStyle("stylesG"); // Устанавливаем стиль по умолчанию
+    }
+}
+
 // Функция для загрузки HTML-файла в элемент и возврата Promise
 function loadHTML(filePath, elementId) {
     return new Promise((resolve, reject) => {
@@ -42,6 +88,9 @@ function setMainMinHeight() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Устанавливаем стиль по умолчанию или сохраненный стиль
+    setDefaultStyle();
+
     // Определяем, является ли текущая страница главной
     const isHomePage = document.body.classList.contains('home-page');
 
@@ -141,7 +190,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     applyFilters();
 
-
     // Добавлен код для inner tabs
     const innerButtons = document.querySelectorAll(".inner-tab-button");
     const innerContents = document.querySelectorAll(".inner-tab-content");
@@ -165,44 +213,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const switchToD = document.getElementById("switch-to-d");
     const switchToG = document.getElementById("switch-to-g");
 
-    // Ссылка на текущий элемент стилей
-    const styleLink = document.querySelector('link[rel="stylesheet"]');
-
-    // Функции переключения тем
-    function setDarkTheme() {
-        if (styleLink) {
-            const isHomePage = document.body.classList.contains('home-page');
-            if (!isHomePage) {
-                styleLink.href = "../stylesD.css"; // Устанавливаем темный стиль
-                localStorage.setItem("selectedStyle", "../stylesD.css"); // Сохраняем в локальное хранилище
-            } else {
-                styleLink.href = "stylesD.css"; // Устанавливаем темный стиль
-                localStorage.setItem("selectedStyle", "stylesD.css"); // Сохраняем в локальное хранилище
-            }
-        }
-    }
-
-    function setGreenTheme() {
-        if (styleLink) {
-            const isHomePage = document.body.classList.contains('home-page');
-            if (!isHomePage) {
-                styleLink.href = "../stylesG.css"; // Устанавливаем зеленый стиль
-                localStorage.setItem("selectedStyle", "../stylesG.css"); // Сохраняем в локальное хранилище
-            } else {
-                styleLink.href = "stylesG.css"; // Устанавливаем зеленый стиль
-                localStorage.setItem("selectedStyle", "stylesG.css"); // Сохраняем в локальное хранилище
-            }
-        }
-    }
-
-    // Восстановление выбранного стиля при загрузке страницы
-    const savedStyle = localStorage.getItem("selectedStyle");
-    if (savedStyle) {
-        styleLink.href = savedStyle;
-    }
-
     // Обработчики кнопок
-    switchToD.addEventListener("click", setDarkTheme);
-    switchToG.addEventListener("click", setGreenTheme);
-
+    if (switchToD) {
+        switchToD.addEventListener("click", () => setStyle("stylesD"));
+    }
+    if (switchToG) {
+        switchToG.addEventListener("click", () => setStyle("stylesG"));
+    }
 });
