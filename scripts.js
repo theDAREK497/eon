@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const switchToD = document.getElementById("switch-to-d");
     const switchToG = document.getElementById("switch-to-g");
 
-    // Обработчики кнопок
+    // Обработчики кнопок (с проверкой на существование элементов)
     if (switchToD) {
         switchToD.addEventListener("click", () => setStyle("stylesD"));
     }
