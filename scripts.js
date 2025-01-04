@@ -48,8 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Загрузка header и footer, если это не главная страница
     const loadPromises = [];
     if (!isHomePage) {
-        loadPromises.push(loadHTML('../header.html', 'header-placeholder'));
-        loadPromises.push(loadHTML('../footer.html', 'footer-placeholder'));
+        loadPromises.push(loadHTML('/header.html', 'header-placeholder'));
+        loadPromises.push(loadHTML('/footer.html', 'footer-placeholder'));
     }
 
     // Установка минимальной высоты main после загрузки header и footer
@@ -173,8 +173,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (styleLink) {
             const isHomePage = document.body.classList.contains('home-page');
             if (!isHomePage) {
-                styleLink.href = "../stylesD.css"; // Устанавливаем темный стиль
-                localStorage.setItem("selectedStyle", "../stylesD.css"); // Сохраняем в локальное хранилище
+                styleLink.href = "/stylesD.css"; // Устанавливаем темный стиль
+                localStorage.setItem("selectedStyle", "/stylesD.css"); // Сохраняем в локальное хранилище
             } else {
                 styleLink.href = "stylesD.css"; // Устанавливаем темный стиль
                 localStorage.setItem("selectedStyle", "stylesD.css"); // Сохраняем в локальное хранилище
@@ -186,8 +186,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (styleLink) {
             const isHomePage = document.body.classList.contains('home-page');
             if (!isHomePage) {
-                styleLink.href = "../stylesG.css"; // Устанавливаем зеленый стиль
-                localStorage.setItem("selectedStyle", "../stylesG.css"); // Сохраняем в локальное хранилище
+                styleLink.href = "/stylesG.css"; // Устанавливаем зеленый стиль
+                localStorage.setItem("selectedStyle", "/stylesG.css"); // Сохраняем в локальное хранилище
             } else {
                 styleLink.href = "stylesG.css"; // Устанавливаем зеленый стиль
                 localStorage.setItem("selectedStyle", "stylesG.css"); // Сохраняем в локальное хранилище
