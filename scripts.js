@@ -87,6 +87,19 @@ function setMainMinHeight() {
     }
 }
 
+// Функция для инициализации кнопок переключения стиля
+function initStyleSwitcher() {
+    const switchToD = document.getElementById("switch-to-d");
+    const switchToG = document.getElementById("switch-to-g");
+
+    if (switchToD) {
+        switchToD.addEventListener("click", () => setStyle("stylesD"));
+    }
+    if (switchToG) {
+        switchToG.addEventListener("click", () => setStyle("stylesG"));
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     // Устанавливаем стиль по умолчанию или сохраненный стиль
     setDefaultStyle();
@@ -107,6 +120,9 @@ document.addEventListener("DOMContentLoaded", () => {
             setMainMinHeight();
             // Обновление минимальной высоты main при изменении размера окна
             window.addEventListener('resize', setMainMinHeight);
+
+            // Инициализация кнопок переключения стиля после загрузки футера
+            initStyleSwitcher();
         })
         .catch(error => {
             console.error('Ошибка при загрузке header или footer:', error);
@@ -208,16 +224,4 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
-
-    // Ссылки на кнопки переключения
-    const switchToD = document.getElementById("switch-to-d");
-    const switchToG = document.getElementById("switch-to-g");
-
-    // Обработчики кнопок (с проверкой на существование элементов)
-    if (switchToD) {
-        switchToD.addEventListener("click", () => setStyle("stylesD"));
-    }
-    if (switchToG) {
-        switchToG.addEventListener("click", () => setStyle("stylesG"));
-    }
 });
