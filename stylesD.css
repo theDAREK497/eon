@@ -120,7 +120,7 @@ footer {
 }
 
 /* Стили для кнопок вкладок */
-.tab-button {
+.style-switcher .switch-button, .tab-button {
     flex: 1;
     padding: 10px;
     margin-bottom: 10px;
@@ -132,7 +132,7 @@ footer {
     transition: background-color 0.3s ease;
 }
 
-.tab-button:hover {
+.style-switcher .switch-button:hover, .tab-button:hover {
     background-color: #555;
 }
 
