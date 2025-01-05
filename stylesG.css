@@ -113,7 +113,7 @@ nav ul li a:hover {
     padding: 10px;
 }
 
-.tab-button {
+.style-switcher .switch-button, .tab-button {
     font-family: var(--font-family);
     flex: 1;
     margin: 5px;
@@ -126,7 +126,7 @@ nav ul li a:hover {
     cursor: pointer;
 }
 
-.tab-button:hover {
+.style-switcher .switch-button:hover, .tab-button:hover {
     background-color: var(--hover-color);
     color: var(--background-color);
 }
@@ -188,6 +188,10 @@ footer {
     text-align: center;
     padding: 15px;
     border-top: 3px solid var(--secondary-color);
+}
+
+#footer-placeholder {
+    width: 100%;
 }
 
 /* Адаптивные стили */
