@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Объекты - Мир Эон</title>
+    <link rel="stylesheet" href="../stylesG.css">
+</head>
+
+<body>
+    <header>
+        <h1>Объекты</h1>
+        <div id="header-placeholder"></div>        
+    </header>
+
+    <main id="main">
+        <section>
+            <h2>Объекты в мире Эон</h2>
+            <div class="tab-container">
+                <button class="tab-button active" data-tab="train">Поезд</button>
+                <button class="tab-button" data-tab="vehicle">Транспорт</button>
+                <button class="tab-button" data-tab="equipe">Экипировка</button>                
+            </div>
+
+            <div id="train" class="tab-content active">
+                <h2>Правила управления поездом</h2>
+            </div>
+
+            <div id="vehicle" class="tab-content active">
+                <h2>Правила управления транспортом</h2>
+            </div>
+
+            <div id="equipe" class="tab-content active">
+                <h2>Всё об экипировке</h2>
+            </div>
+            
+        </section>
+
+        <section>
+            <h2>Механика развития поезда</h2>
+            <p>Вместо космического корабля игроки управляют поездом, который можно развивать, добавляя вагоны с разными функциями.</p>
+            <h3>Поезд как модульная система</h3>
+            <ul>
+                <li><strong>Локомотив</strong>: скорость и мощность.</li>
+                <li><strong>Грузовой вагон</strong>: хранение ресурсов.</li>
+                <li><strong>Боевой вагон</strong>: вооружение.</li>
+                <li><strong>Научный вагон</strong>: исследовательские инструменты.</li>
+                <li><strong>Мастерская</strong>: ремонт.</li>
+            </ul>
+    
+            <h3>Прокачка поезда</h3>
+            <table>
+                <tr><th>Узел</th><th>Улучшение</th><th>Характеристика</th><th>Стоимость</th></tr>
+                <tr><td>Локомотив</td><td>Увеличение скорости</td><td>+1 к скорости</td><td>2 Материала / 1 Энергия</td></tr>
+                <tr><td>Грузовой вагон</td><td>Увеличение вместимости</td><td>+3 к вместимости</td><td>2 Материала / 1 Энергия</td></tr>
+                <tr><td>Боевой вагон</td><td>Улучшение брони</td><td>+2 к защите</td><td>3 Материала / 2 Энергии</td></tr>
+                <tr><td>Научный вагон</td><td>Система анализов</td><td>Исследование аномалий</td><td>5 Материалов / 3 Энергии</td></tr>
+            </table>
+        </section>
+    
+        <section>
+            <h2>Боевые роли экипажа</h2>
+            <ul>
+                <li><strong>Механик</strong>: ремонт повреждений, энергосбережение.</li>
+                <li><strong>Стрелок</strong>: управление оружием.</li>
+                <li><strong>Навигатор</strong>: маневры и уклонение.</li>
+                <li><strong>Командир</strong>: тактические решения, приказы.</li>
+                <li><strong>Специалист</strong>: сканирование и поддержка.</li>
+            </ul>
+    
+            <h3>Фазы боя</h3>
+            <ol>
+                <li>Инициатива.</li>
+                <li>Манёвры.</li>
+                <li>Действия экипажа.</li>
+                <li>Действия противников.</li>
+            </ol>
+        </section>
+    
+        <section>
+            <h2>Типы противников</h2>
+            <ul>
+                <li>Наземные машины: багги, танки.</li>
+                <li>Другие поезда.</li>
+                <li>Воздушный транспорт: дроны, вертолёты.</li>
+                <li>Препятствия.</li>
+            </ul>
+    
+            <h3>Система урона</h3>
+            <table>
+                <tr><th>Тип вагона</th><th>Хиты</th></tr>
+                <tr><td>Локомотив</td><td>15</td></tr>
+                <tr><td>Боевой вагон</td><td>10</td></tr>
+            </table>
+        </section>
+    
+        <section>
+            <h2>Техника</h2>
+    
+            <h3>Архаичная техника</h3>
+            <table>
+                <tr><th>Название</th><th>Скорость</th><th>Защита</th><th>Хиты</th><th>Цена</th></tr>
+                <tr><td>Паровоз</td><td>4</td><td>2</td><td>10</td><td>500</td></tr>
+                <tr><td>Телега</td><td>2</td><td>1</td><td>5</td><td>100</td></tr>
+            </table>
+    
+            <h3>Современная техника</h3>
+            <table>
+                <tr><th>Название</th><th>Скорость</th><th>Защита</th><th>Хиты</th><th>Цена</th></tr>
+                <tr><td>Внедорожник</td><td>8</td><td>3</td><td>15</td><td>1500</td></tr>
+                <tr><td>Танк</td><td>5</td><td>8</td><td>25</td><td>8000</td></tr>
+            </table>
+    
+            <h3>Продвинутая техника</h3>
+            <table>
+                <tr><th>Название</th><th>Скорость</th><th>Защита</th><th>Хиты</th><th>Цена</th></tr>
+                <tr><td>Гравимобиль</td><td>12</td><td>4</td><td>15</td><td>6000</td></tr>
+                <tr><td>Рельсотрон</td><td>10</td><td>5</td><td>30</td><td>15000</td></tr>
+            </table>
+    
+            <h3>Кристаллическая техника</h3>
+            <table>
+                <tr><th>Название</th><th>Скорость</th><th>Защита</th><th>Хиты</th><th>Цена</th></tr>
+                <tr><td>Локомотив Эон</td><td>8</td><td>5</td><td>30</td><td>10000</td></tr>
+                <tr><td>Ховертанк</td><td>12</td><td>7</td><td>28</td><td>15000</td></tr>
+            </table>
+        </section>
+    
+        <section>
+            <h2>Вооружение для транспорта</h2>
+            <table>
+                <tr><th>Название</th><th>Урон</th><th>Дальность</th><th>Скорострельность</th><th>Пробитие</th><th>Цена</th></tr>
+                <tr><td>Паровая пушка</td><td>3</td><td>Средняя</td><td>1</td><td>1</td><td>300</td></tr>
+                <tr><td>Лазерная турель</td><td>6</td><td>Дальняя</td><td>2</td><td>3</td><td>1200</td></tr>
+                <tr><td>Пулемёт</td><td>4</td><td>Средняя</td><td>3</td><td>1</td><td>500</td></tr>
+            </table>
+        </section>
+    
+        <section>
+            <h2>Экипировка для людей</h2>
+    
+            <h3>Архаичное оружие</h3>
+            <table>
+                <tr><th>Название</th><th>Урон</th><th>Дальность</th><th>Пробитие</th><th>Цена</th></tr>
+                <tr><td>Нож</td><td>3</td><td>Ближняя</td><td>0</td><td>25</td></tr>
+                <tr><td>Лук</td><td>4</td><td>Средняя</td><td>0</td><td>50</td></tr>
+            </table>
+    
+            <h3>Современное оружие</h3>
+            <table>
+                <tr><th>Название</th><th>Урон</th><th>Дальность</th><th>Пробитие</th><th>Цена</th></tr>
+                <tr><td>Пистолет</td><td>5</td><td>Средняя</td><td>0</td><td>200</td></tr>
+                <tr><td>Автомат</td><td>6</td><td>Средняя</td><td>1</td><td>500</td></tr>
+            </table>
+    
+            <h3>Кристаллическое оружие</h3>
+            <table>
+                <tr><th>Название</th><th>Урон</th><th>Дальность</th><th>Пробитие</th><th>Цена</th></tr>
+                <tr><td>Кристаллический клинок</td><td>7</td><td>Ближняя</td><td>2</td><td>1000</td></tr>
+                <tr><td>Энергетический пистолет</td><td>7</td><td>Средняя</td><td>3</td><td>1200</td></tr>
+            </table>
+    
+            <h3>Броня</h3>
+    
+            <h4>Архаичная</h4>
+            <table>
+                <tr><th>Название</th><th>Защита</th><th>Гибкость</th><th>Цена</th></tr>
+                <tr><td>Кожаный доспех</td><td>2</td><td>4</td><td>100</td></tr>
+                <tr><td>Кольчуга</td><td>3</td><td>2</td><td>200</td></tr>
+            </table>
+    
+            <h4>Современная</h4>
+            <table>
+                <tr><th>Название</th><th>Защита</th><th>Гибкость</th><th>Цена</th></tr>
+                <tr><td>Бронежилет</td><td>5</td><td>3</td><td>500</td></tr>
+                <tr><td>Тактическая броня</td><td>6</td><td>2</td><td>700</td></tr>
+            </table>
+    
+            <h4>Кристаллическая</h4>
+            <table>
+                <tr><th>Название</th><th>Защита</th><th>Гибкость</th><th>Цена</th></tr>
+                <tr><td>Кристаллический панцирь</td><td>10</td><td>2</td><td>3500</td></tr>
+                <tr><td>Симбиотический костюм</td><td>6</td><td>5</td><td>4500</td></tr>
+            </table>
+        </section>
+    
+        <section>
+            <h2>Катализаторы Эон</h2>
+            <table>
+                <tr><th>Название</th><th>Уровень</th><th>Особенности</th><th>Цена</th></tr>
+                <tr><td>Осколок Эон</td><td>1</td><td>Базовые способности</td><td>500</td></tr>
+                <tr><td>Кристалл Резонанса</td><td>2</td><td>+1 к пси-броскам</td><td>1200</td></tr>
+            </table>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../scripts.js"></script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
