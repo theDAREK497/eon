@@ -159,6 +159,10 @@ table {
     color: var(--text-color);
 }
 
+.big-table {
+    overflow-x: scroll;
+}
+
 thead th {
     background-color: var(--primary-color);
     color: var(--background-color);
