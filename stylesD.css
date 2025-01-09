@@ -476,14 +476,16 @@ section ul li {
 
 .terminal-init {
     font-family: monospace;
+    color: #00ff00; /* Зелёный цвет текста, как в терминале */
+    background-color: #000; /* Чёрный фон */
     padding: 20px;
+    border: 1px solid #00ff00;
     margin: 20px 0;
 }
 
 .terminal-text {
     opacity: 0;
-    animation: fadeIn 0.5s forwards;
-    animation-delay: 0.5s;
+    animation: fadeIn 1.5s forwards; /* Увеличиваем время анимации появления текста */
 }
 
 @keyframes fadeIn {
@@ -492,15 +494,12 @@ section ul li {
     }
 }
 
-#loading-dots::after {
-    content: '';
-    animation: dots 1s infinite;
-}
-
+/* Анимация точек */
+#init-dots::after,
+#loading-dots::after,
 #scanning-dots::after {
     content: '';
-    animation: dots 1s infinite;
-    animation-delay: 1s;
+    animation: dots 3s infinite; /* Увеличиваем время анимации точек */
 }
 
 @keyframes dots {

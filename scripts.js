@@ -27,25 +27,33 @@ function animateTerminalInit() {
     const terminalInit = document.getElementById('terminal-init');
     const terminalTexts = terminalInit.querySelectorAll('.terminal-text');
 
-    // Постепенно показываем текст с задержкой
-    terminalTexts.forEach((text, index) => {
+    // Функция для показа строки с задержкой
+    function showTextWithDelay(texts, index) {
+        if (index >= texts.length) return; // Останавливаемся, если строки закончились
+
+        // Показываем текущую строку
         setTimeout(() => {
-            text.style.opacity = 1;
-        }, index * 160000); // Задержка между появлением строк
-    });
+            texts[index].style.opacity = 1;
 
-    // Анимация точек для "Загрузка данных..." и "Сканирование окружения..."
-    const loadingDots = document.getElementById('loading-dots');
-    const scanningDots = document.getElementById('scanning-dots');
+            // Запускаем анимацию точек, если это строка с точками
+            if (texts[index].querySelector('span')) {
+                const dots = texts[index].querySelector('span');
+                dots.style.animation = 'dots 3s infinite'; // Увеличиваем время анимации точек
+            }
 
-    setTimeout(() => {
-        loadingDots.style.animation = 'dots 1s infinite';
-    }, 10000);
+            // Рекурсивно вызываем функцию для следующей строки
+            showTextWithDelay(texts, index + 1);
+        }, 3000); // Задержка между строками: 3 секунды
+    }
 
-    setTimeout(() => {
-        scanningDots.style.animation = 'dots 1s infinite';
-    }, 20000);
+    // Запускаем анимацию с первой строки
+    showTextWithDelay(terminalTexts, 0);
 }
+
+// Вызываем анимацию после загрузки страницы
+document.addEventListener("DOMContentLoaded", () => {
+    animateTerminalInit();
+});
 
 // Функция для установки стиля
 function setStyle(styleName) {
