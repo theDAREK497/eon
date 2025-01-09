@@ -23,6 +23,30 @@ function getCookie(name) {
     return "";
 }
 
+function animateTerminalInit() {
+    const terminalInit = document.getElementById('terminal-init');
+    const terminalTexts = terminalInit.querySelectorAll('.terminal-text');
+
+    // Постепенно показываем текст с задержкой
+    terminalTexts.forEach((text, index) => {
+        setTimeout(() => {
+            text.style.opacity = 1;
+        }, index * 160000); // Задержка между появлением строк
+    });
+
+    // Анимация точек для "Загрузка данных..." и "Сканирование окружения..."
+    const loadingDots = document.getElementById('loading-dots');
+    const scanningDots = document.getElementById('scanning-dots');
+
+    setTimeout(() => {
+        loadingDots.style.animation = 'dots 1s infinite';
+    }, 10000);
+
+    setTimeout(() => {
+        scanningDots.style.animation = 'dots 1s infinite';
+    }, 20000);
+}
+
 // Функция для установки стиля
 function setStyle(styleName) {
     const styleLink = document.querySelector('link[rel="stylesheet"]');
@@ -224,4 +248,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+    animateTerminalInit();
 });
