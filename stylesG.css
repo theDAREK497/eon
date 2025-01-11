@@ -260,6 +260,16 @@ h3 {
     color: var(--secondary-color);
 }
 
+@media (max-width: 1024px) {
+    h2 {
+        font-size: 19px;
+    }
+    
+    h3 {
+        font-size: 15px;
+    }
+}
+
 /* Стили для статей */
 article {
     background-color: var(--background-color);
