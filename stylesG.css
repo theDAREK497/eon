@@ -92,6 +92,15 @@ section {
     box-shadow: 0 0 10px var(--primary-color);
 }
 
+@media (max-width: 1024px) {
+    section {
+        padding: 0;
+        border: 0px solid var(--primary-color);
+        border-radius: 0;
+        box-shadow: none;
+    }
+}
+
 /* Навигация */
 nav ul {
     display: flex;
