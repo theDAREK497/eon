@@ -603,3 +603,21 @@ section {
 p, h1, h2, h3, h4, h5, h6, .legend-label, a, button, td {
     transform: scaleY(1.2h);
 }
+
+.character-avatar {
+    width: 150px; /* Размер аватара */
+    height: 150px;
+    border-radius: 50%; /* Круглый аватар */
+    border: 3px solid var(--primary-color); /* Рамка вокруг аватара */
+    margin-bottom: 15px; /* Отступ снизу */
+    object-fit: cover; /* Чтобы изображение не искажалось */
+    box-shadow: 0 0 10px var(--primary-color); /* Тень для эффекта свечения */
+}
+
+/* Адаптивные стили для аватаров */
+@media (max-width: 768px) {
+    .character-avatar {
+        width: 100px;
+        height: 100px;
+    }
+}

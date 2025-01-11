@@ -520,3 +520,21 @@ section ul li {
         content: '';
     }
 }
+
+.character-avatar {
+    width: 150px; /* Размер аватара */
+    height: 150px;
+    border-radius: 50%; /* Круглый аватар */
+    border: 3px solid #333; /* Рамка вокруг аватара */
+    margin-bottom: 15px; /* Отступ снизу */
+    object-fit: cover; /* Чтобы изображение не искажалось */
+    box-shadow: 0 0 10px #333; /* Тень для эффекта свечения */
+}
+
+/* Адаптивные стили для аватаров */
+@media (max-width: 768px) {
+    .character-avatar {
+        width: 100px;
+        height: 100px;
+    }
+}
