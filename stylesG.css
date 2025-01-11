@@ -48,6 +48,10 @@ body {
     background-size: 100% 100%;
 }
 
+hr {
+    margin: 15px 0;
+}
+
 /* Стили для заголовка */
 header {
     width: 100%;
@@ -568,4 +572,8 @@ section {
     80%, 100% {
         content: '';
     }
+}
+
+p, h1, h2, h3, h4, h5, h6, .legend-label, a, button, td {
+    transform: scaleY(1.5);
 }

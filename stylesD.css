@@ -11,6 +11,10 @@ body {
     line-height: 1.6;
 }
 
+hr {
+    margin: 15px 0;
+}
+
 /* Стили для заголовка */
 header {
     background-color: #333;
