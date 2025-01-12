@@ -260,21 +260,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     animateTerminalInit();
 
-    const blocks = document.querySelectorAll('.404');
+    // Используем новый класс
+    const blocks = document.querySelectorAll('.error-404');
 
     blocks.forEach(block => {
-        // Рекурсивно обходим все дочерние элементы
         const replaceTextWithBlocks = (element) => {
-            // Если у элемента есть текстовые узлы, заменяем их на █
             if (element.nodeType === Node.TEXT_NODE && element.textContent.trim() !== "") {
                 element.textContent = "█".repeat(element.textContent.length);
             } else if (element.nodeType === Node.ELEMENT_NODE) {
-                // Рекурсивно обрабатываем дочерние элементы
                 Array.from(element.childNodes).forEach(replaceTextWithBlocks);
             }
         };
 
-        // Начинаем обработку с текущего блока
         replaceTextWithBlocks(block);
     });
 });
