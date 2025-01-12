@@ -26,6 +26,7 @@ header {
 /* Стили для секций */
 section {
     margin-bottom: 20px;
+    overflow: hidden;
 }
 
 /* Стили для навигации */
