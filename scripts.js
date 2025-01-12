@@ -25,6 +25,12 @@ function getCookie(name) {
 
 function animateTerminalInit() {
     const terminalInit = document.getElementById('terminal-init');
+
+    // Проверяем, существует ли элемент с ID 'terminal-init'
+    if (!terminalInit) {
+        return; // Прекращаем выполнение функции, если элемент не найден
+    }
+
     const terminalTexts = terminalInit.querySelectorAll('.terminal-text');
 
     // Функция для показа строки с задержкой
@@ -49,11 +55,6 @@ function animateTerminalInit() {
     // Запускаем анимацию с первой строки
     showTextWithDelay(terminalTexts, 0);
 }
-
-// Вызываем анимацию после загрузки страницы
-document.addEventListener("DOMContentLoaded", () => {
-    animateTerminalInit();
-});
 
 // Функция для установки стиля
 function setStyle(styleName) {

@@ -44,7 +44,6 @@ body {
     align-items: center;
     justify-content: flex-start;
     min-height: 100vh;
-    cursor: url(./assets/mouse.svg), auto;
     border: 2px solid var(--primary-color);
     color: var(--primary-color);
     mask-image: linear-gradient(to bottom, #0005 50%, #000 50%);
