@@ -690,7 +690,7 @@ p, h1, h2, h3, h4, h5, h6, .legend-label, a, button, td {
 
 /* Анимация бургер-меню */
 .burger-menu.active .burger-line:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(6px, 6px);
 }
 
 .burger-menu.active .burger-line:nth-child(2) {
@@ -698,5 +698,5 @@ p, h1, h2, h3, h4, h5, h6, .legend-label, a, button, td {
 }
 
 .burger-menu.active .burger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+    transform: rotate(-45deg) translate(6px, -6px);
 }

@@ -137,11 +137,17 @@ function initBurgerMenu() {
     const burgerMenu = document.querySelector('.burger-menu');
     const navUl = document.querySelector('nav ul');
 
-    if (burgerMenu && navUl) {
+    console.log('Burger Menu:', burgerMenu); // Отладочное сообщение
+    console.log('Nav UL:', navUl); // Отладочное сообщение
+
+    if (burgerMenu && navUl && !burgerMenu.dataset.initialized) {
         burgerMenu.addEventListener('click', () => {
             navUl.classList.toggle('active');
             burgerMenu.classList.toggle('active');
         });
+        burgerMenu.dataset.initialized = 'true'; // Помечаем бургер-меню как инициализированное
+    } else {
+        console.error('Элементы бургер-меню или навигации не найдены в DOM или уже инициализированы.'); // Отладочное сообщение
     }
 }
 
@@ -152,25 +158,30 @@ document.addEventListener("DOMContentLoaded", () => {
     // Определяем, является ли текущая страница главной
     const isHomePage = document.body.classList.contains('home-page');
 
+    // Инициализация бургер-меню на главной странице
+    if (isHomePage) {
+        initBurgerMenu();
+    }
+
     // Загрузка header и footer, если это не главная страница
     const loadPromises = [];
     if (!isHomePage) {
-        loadPromises.push(loadHTML('../header.html', 'header-placeholder'));
+        loadPromises.push(
+            loadHTML('../header.html', 'header-placeholder', () => {
+                // Инициализация бургер-меню после загрузки header
+                initBurgerMenu();
+            })
+        );
         loadPromises.push(loadHTML('../footer.html', 'footer-placeholder'));
     }
 
     // Установка минимальной высоты main после загрузки header и footer
     Promise.all(loadPromises)
         .then(() => {
+            console.log('Header и Footer загружены.'); // Отладочное сообщение
             setMainMinHeight();
-            // Обновление минимальной высоты main при изменении размера окна
             window.addEventListener('resize', setMainMinHeight);
-
-            // Инициализация кнопок переключения стиля после загрузки футера
             initStyleSwitcher();
-
-            // Инициализация бургер-меню после загрузки header
-            initBurgerMenu();
         })
         .catch(error => {
             console.error('Ошибка при загрузке header или footer:', error);
