@@ -137,42 +137,25 @@ function initBurgerMenu() {
     const burgerMenu = document.querySelector('.burger-menu');
     const navUl = document.querySelector('nav ul');
 
-    console.log('Burger Menu:', burgerMenu); // Отладочное сообщение
-    console.log('Nav UL:', navUl); // Отладочное сообщение
-
-    if (burgerMenu && navUl && !burgerMenu.dataset.initialized) {
+    if (burgerMenu && navUl) {
         burgerMenu.addEventListener('click', () => {
             navUl.classList.toggle('active');
             burgerMenu.classList.toggle('active');
         });
-        burgerMenu.dataset.initialized = 'true'; // Помечаем бургер-меню как инициализированное
-    } else {
-        console.error('Элементы бургер-меню или навигации не найдены в DOM или уже инициализированы.'); // Отладочное сообщение
     }
-}
-
-function isHomePage() {
-    return window.location.pathname.endsWith('/index.html') || window.location.pathname === '/';
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     // Устанавливаем стиль по умолчанию или сохраненный стиль
     setDefaultStyle();
 
-    // Инициализация бургер-меню на главной странице
-    if (isHomePage()) {
-        initBurgerMenu();
-    }
+    // Определяем, является ли текущая страница главной
+    const isHomePage = document.body.classList.contains('home-page');
 
     // Загрузка header и footer, если это не главная страница
     const loadPromises = [];
-    if (!isHomePage()) {
-        loadPromises.push(
-            loadHTML('../header.html', 'header-placeholder', () => {
-                // Инициализация бургер-меню после загрузки header
-                initBurgerMenu();
-            })
-        );
+    if (!isHomePage) {
+        loadPromises.push(loadHTML('../header.html', 'header-placeholder'));
         loadPromises.push(loadHTML('../footer.html', 'footer-placeholder'));
     }
 
@@ -183,6 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
             setMainMinHeight();
             window.addEventListener('resize', setMainMinHeight);
             initStyleSwitcher();
+            initBurgerMenu(); // Инициализация бургер-меню
         })
         .catch(error => {
             console.error('Ошибка при загрузке header или footer:', error);
@@ -301,6 +285,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
         replaceTextWithBlocks(block);
     });
-
-    initBurgerMenu();
 });
