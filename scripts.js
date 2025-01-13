@@ -274,4 +274,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         replaceTextWithBlocks(block);
     });
+
+    const burgerMenu = document.querySelector('.burger-menu');
+    const navUl = document.querySelector('nav ul');
+
+    if (burgerMenu && navUl) {
+        burgerMenu.addEventListener('click', () => {
+            navUl.classList.toggle('active');
+            burgerMenu.classList.toggle('active');
+        });
+    }
 });
