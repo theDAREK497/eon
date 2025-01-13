@@ -37,11 +37,7 @@ section {
     overflow: auto;
 }
 
-#tab-overview,
-#tab-facts,
-#tab-eon-science,
-#tab-black-heart,
-#tab-echo {
+.tabs {
     overflow: hidden;
 }
 
