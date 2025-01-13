@@ -181,6 +181,7 @@ table {
     border-collapse: collapse;
     margin-top: 20px;
     color: var(--text-color);
+    overflow-x: scroll
 }
 
 .big-table {
