@@ -133,6 +133,18 @@ function initStyleSwitcher() {
     }
 }
 
+function initBurgerMenu() {
+    const burgerMenu = document.querySelector('.burger-menu');
+    const navUl = document.querySelector('nav ul');
+
+    if (burgerMenu && navUl) {
+        burgerMenu.addEventListener('click', () => {
+            navUl.classList.toggle('active');
+            burgerMenu.classList.toggle('active');
+        });
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     // Устанавливаем стиль по умолчанию или сохраненный стиль
     setDefaultStyle();
@@ -156,6 +168,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Инициализация кнопок переключения стиля после загрузки футера
             initStyleSwitcher();
+
+            // Инициализация бургер-меню после загрузки header
+            initBurgerMenu();
         })
         .catch(error => {
             console.error('Ошибка при загрузке header или footer:', error);
@@ -275,13 +290,5 @@ document.addEventListener("DOMContentLoaded", () => {
         replaceTextWithBlocks(block);
     });
 
-    const burgerMenu = document.querySelector('.burger-menu');
-    const navUl = document.querySelector('nav ul');
-
-    if (burgerMenu && navUl) {
-        burgerMenu.addEventListener('click', () => {
-            navUl.classList.toggle('active');
-            burgerMenu.classList.toggle('active');
-        });
-    }
+    initBurgerMenu();
 });
