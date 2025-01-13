@@ -151,21 +151,22 @@ function initBurgerMenu() {
     }
 }
 
+function isHomePage() {
+    return window.location.pathname.endsWith('/index.html') || window.location.pathname === '/';
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     // Устанавливаем стиль по умолчанию или сохраненный стиль
     setDefaultStyle();
 
-    // Определяем, является ли текущая страница главной
-    const isHomePage = document.body.classList.contains('home-page');
-
     // Инициализация бургер-меню на главной странице
-    if (isHomePage) {
+    if (isHomePage()) {
         initBurgerMenu();
     }
 
     // Загрузка header и footer, если это не главная страница
     const loadPromises = [];
-    if (!isHomePage) {
+    if (!isHomePage()) {
         loadPromises.push(
             loadHTML('../header.html', 'header-placeholder', () => {
                 // Инициализация бургер-меню после загрузки header
