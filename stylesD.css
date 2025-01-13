@@ -34,7 +34,7 @@ section {
 #tab-eon-science section,
 #tab-black-heart section,
 #tab-echo section {
-    overflow: auto;
+    overflow: initial;
 }
 
 .tabs {
