@@ -580,6 +580,7 @@ section ul li {
 .nav-container {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 /* Адаптивные стили для мобильных устройств */
