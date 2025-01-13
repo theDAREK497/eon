@@ -29,6 +29,22 @@ section {
     overflow: hidden;
 }
 
+#tab-overview section,
+#tab-facts section,
+#tab-eon-science section,
+#tab-black-heart section,
+#tab-echo section {
+    overflow: auto;
+}
+
+#tab-overview,
+#tab-facts,
+#tab-eon-science,
+#tab-black-heart,
+#tab-echo {
+    overflow: hidden;
+}
+
 /* Стили для навигации */
 nav ul {
     display: flex;
