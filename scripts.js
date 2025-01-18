@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Функция для обновления таймера
 function updateCountdown() {
-    const targetDate = new Date("2024-02-12T00:00:00"); // Дата 12 февраля 2024 года
+    const targetDate = new Date("2025-02-12T00:00:00"); // Дата 12 февраля 2024 года
     const now = new Date(); // Текущая дата и время
 
     // Разница между целевой датой и текущей датой (в миллисекундах)
