@@ -2,14 +2,14 @@
 
 // Логин и хэш пароля для авторизации
 const AUTH_USERNAME = "BlackHeart_2012";
-const AUTH_PASSWORD_HASH = "d2f8a9b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5"; // Хэш для пароля "password"
+const AUTH_PASSWORD_HASH = "28501c291a962f38df52e6688d3ab82f153161ef4319eb3ea74f6ab926719e59"; // Хэш для пароля "password"
 
 // Соль для усиления безопасности
-const SALT = "my_unique_salt";
+const SALT = "exo";
 
 // Функция для хэширования пароля с использованием SHA-256
 function hashPassword(password) {
-    return CryptoJS.SHA256(password + SALT).toString(CryptoJS.enc.Hex);
+    return CryptoJS.SHA256(password).toString(CryptoJS.enc.Hex);
 }
 
 // Функция для проверки авторизации
