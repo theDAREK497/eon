@@ -57,6 +57,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //===========================================================================
 
+// Функция для обновления таймера
+function updateCountdown() {
+    const targetDate = new Date("2024-02-12T00:00:00"); // Дата 12 февраля 2024 года
+    const now = new Date(); // Текущая дата и время
+
+    // Разница между целевой датой и текущей датой (в миллисекундах)
+    const timeDifference = targetDate - now;
+
+    // Если время вышло, останавливаем таймер
+    if (timeDifference <= 0) {
+        document.getElementById("timer").innerHTML = "Время вышло!";
+        return;
+    }
+
+    // Конвертируем разницу в дни, часы, минуты и секунды
+    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+    // Обновляем элементы таймера
+    document.getElementById("days").textContent = String(days).padStart(2, "0");
+    document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+    document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+    document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+}
+
+//===========================================================================
+
 // Функция для установки куки
 function setCookie(name, value, days) {
     const date = new Date();
@@ -221,6 +250,8 @@ document.addEventListener("DOMContentLoaded", () => {
     setDefaultStyle();
     checkAuth();
     initAuthForm();
+    updateCountdown(); // Первый запуск
+    setInterval(updateCountdown, 1000); // Обновляем таймер каждую секунду
 
     // Определяем, является ли текущая страница главной
     const isHomePage = document.body.classList.contains('home-page');
