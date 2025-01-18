@@ -250,8 +250,12 @@ document.addEventListener("DOMContentLoaded", () => {
     setDefaultStyle();
     checkAuth();
     initAuthForm();
-    updateCountdown(); // Первый запуск
-    setInterval(updateCountdown, 1000); // Обновляем таймер каждую секунду
+    try {
+        updateCountdown(); // Первый запуск
+        setInterval(updateCountdown, 1000); // Обновляем таймер каждую секунду
+    } catch (error) {
+        
+    }    
 
     // Определяем, является ли текущая страница главной
     const isHomePage = document.body.classList.contains('home-page');
