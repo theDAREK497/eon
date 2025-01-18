@@ -1,8 +1,16 @@
 //===========================================================================
 
-// Логин и пароль для авторизации
+// Логин и хэш пароля для авторизации
 const AUTH_USERNAME = "BlackHeart_2012";
-const AUTH_PASSWORD = "password";
+const AUTH_PASSWORD_HASH = "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8"; // Хэш для пароля "password"
+
+// Соль для усиления безопасности
+const SALT = "my_unique_salt";
+
+// Функция для хэширования пароля с использованием SHA-256
+function hashPassword(password) {
+    return CryptoJS.SHA256(password + SALT).toString(CryptoJS.enc.Hex);
+}
 
 // Функция для проверки авторизации
 function checkAuth() {
@@ -21,7 +29,11 @@ function handleAuthFormSubmit(event) {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    if (username === AUTH_USERNAME && password === AUTH_PASSWORD) {
+    // Хэшируем введённый пароль
+    const hashedPassword = hashPassword(password);
+
+    // Сравниваем логин и хэш пароля
+    if (username === AUTH_USERNAME && hashedPassword === AUTH_PASSWORD_HASH) {
         setCookie("auth", "true", 30); // Устанавливаем куки на 30 дней
         window.location.href = "/eon/index.html"; // Перенаправляем на главную страницу
     } else {
@@ -36,6 +48,12 @@ function initAuthForm() {
         authForm.addEventListener("submit", handleAuthFormSubmit);
     }
 }
+
+// Проверка авторизации при загрузке страницы
+document.addEventListener("DOMContentLoaded", () => {
+    checkAuth();
+    initAuthForm();
+});
 
 //===========================================================================
 
