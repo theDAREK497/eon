@@ -1,3 +1,44 @@
+//===========================================================================
+
+// Логин и пароль для авторизации
+const AUTH_USERNAME = "BlackHeart_2012";
+const AUTH_PASSWORD = "CrystalEvo#42";
+
+// Функция для проверки авторизации
+function checkAuth() {
+    const authCookie = getCookie("auth");
+    if (!authCookie) {
+        // Если куки нет, перенаправляем на страницу авторизации
+        if (window.location.pathname !== "/auth.html") {
+            window.location.href = "/auth.html";
+        }
+    }
+}
+
+// Функция для обработки формы авторизации
+function handleAuthFormSubmit(event) {
+    event.preventDefault();
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    if (username === AUTH_USERNAME && password === AUTH_PASSWORD) {
+        setCookie("auth", "true", 30); // Устанавливаем куки на 30 дней
+        window.location.href = "/index.html"; // Перенаправляем на главную страницу
+    } else {
+        alert("Неверный логин или пароль");
+    }
+}
+
+// Инициализация формы авторизации
+function initAuthForm() {
+    const authForm = document.getElementById("auth-form");
+    if (authForm) {
+        authForm.addEventListener("submit", handleAuthFormSubmit);
+    }
+}
+
+//===========================================================================
+
 // Функция для установки куки
 function setCookie(name, value, days) {
     const date = new Date();
@@ -22,6 +63,8 @@ function getCookie(name) {
     }
     return "";
 }
+
+//===========================================================================
 
 function animateTerminalInit() {
     const terminalInit = document.getElementById('terminal-init');
@@ -56,6 +99,8 @@ function animateTerminalInit() {
     showTextWithDelay(terminalTexts, 0);
 }
 
+//===========================================================================
+
 // Функция для установки стиля
 function setStyle(styleName) {
     const styleLink = document.querySelector('link[rel="stylesheet"]');
@@ -76,6 +121,8 @@ function setDefaultStyle() {
         setStyle("stylesG"); // Устанавливаем стиль по умолчанию
     }
 }
+
+//===========================================================================
 
 // Функция для загрузки HTML-файла в элемент и возврата Promise
 function loadHTML(filePath, elementId) {
@@ -104,6 +151,8 @@ function loadHTML(filePath, elementId) {
     });
 }
 
+//===========================================================================
+
 // Функция для установки минимальной высоты main
 function setMainMinHeight() {
     const mainElement = document.querySelector('main');
@@ -119,6 +168,8 @@ function setMainMinHeight() {
         mainElement.style.minHeight = `${minHeight - 39}px`;
     }
 }
+
+//===========================================================================
 
 // Функция для инициализации кнопок переключения стиля
 function initStyleSwitcher() {
@@ -145,9 +196,13 @@ function initBurgerMenu() {
     }
 }
 
+//===========================================================================
+
 document.addEventListener("DOMContentLoaded", () => {
     // Устанавливаем стиль по умолчанию или сохраненный стиль
     setDefaultStyle();
+    checkAuth();
+    initAuthForm();
 
     // Определяем, является ли текущая страница главной
     const isHomePage = document.body.classList.contains('home-page');
