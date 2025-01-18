@@ -2,7 +2,7 @@
 
 // Логин и хэш пароля для авторизации
 const AUTH_USERNAME = "BlackHeart_2012";
-const AUTH_PASSWORD_HASH = "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8"; // Хэш для пароля "password"
+const AUTH_PASSWORD_HASH = "d2f8a9b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5"; // Хэш для пароля "password"
 
 // Соль для усиления безопасности
 const SALT = "my_unique_salt";
