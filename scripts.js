@@ -23,7 +23,7 @@ function handleAuthFormSubmit(event) {
 
     if (username === AUTH_USERNAME && password === AUTH_PASSWORD) {
         setCookie("auth", "true", 30); // Устанавливаем куки на 30 дней
-        window.location.href = "/index.html"; // Перенаправляем на главную страницу
+        window.location.href = "/eon/index.html"; // Перенаправляем на главную страницу
     } else {
         alert("Неверный логин или пароль");
     }
