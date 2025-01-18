@@ -2,17 +2,15 @@
 
 // Логин и пароль для авторизации
 const AUTH_USERNAME = "BlackHeart_2012";
-const AUTH_PASSWORD = "CrystalEvo#42";
+const AUTH_PASSWORD = "password";
 
 // Функция для проверки авторизации
 function checkAuth() {
     const authCookie = getCookie("auth");
     if (!authCookie) {
         // Если куки нет, перенаправляем на страницу авторизации
-        if (window.location.pathname !== "auth.html") {
-            const isHomePageAuth = document.body.classList.contains('home-page');
-            const authPath = isHomePage ? `auth.html` : `../auth.html`;
-            window.location.href = authPath;
+        if (window.location.pathname !== "/eon/auth.html") {
+            window.location.href = "/eon/auth.html";
         }
     }
 }
@@ -25,7 +23,7 @@ function handleAuthFormSubmit(event) {
 
     if (username === AUTH_USERNAME && password === AUTH_PASSWORD) {
         setCookie("auth", "true", 30); // Устанавливаем куки на 30 дней
-        window.location.href = "index.html"; // Перенаправляем на главную страницу
+        window.location.href = "/index.html"; // Перенаправляем на главную страницу
     } else {
         alert("Неверный логин или пароль");
     }
