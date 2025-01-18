@@ -625,3 +625,57 @@ section ul li {
 .burger-menu.active .burger-line:nth-child(3) {
     transform: rotate(-45deg) translate(6px, -6px);
 }
+
+/* Стили для контейнера авторизации */
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Занимает всю высоту экрана */
+    background-color: #f4f4f4; /* Фон контейнера */
+    padding: 20px;
+}
+
+/* Стили для формы авторизации */
+#auth-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Максимальная ширина формы */
+    text-align: center;
+}
+
+#auth-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+#auth-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#auth-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#auth-form button:hover {
+    background-color: #555;
+}

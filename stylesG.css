@@ -686,3 +686,66 @@ p, h1, h2, h3, h4, h5, h6, .legend-label, a, button, td {
 .burger-menu.active .burger-line:nth-child(3) {
     transform: rotate(-45deg) translate(6px, -6px);
 }
+
+/* Стили для контейнера авторизации */
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Занимает всю высоту экрана */
+    background-color: var(--background-color); /* Фон контейнера */
+    padding: 20px;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+/* Стили для формы авторизации */
+#auth-form {
+    background-color: var(--background-color);
+    padding: 20px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    box-shadow: 0 0 10px var(--primary-color);
+    width: 100%;
+    max-width: 400px; /* Максимальная ширина формы */
+    text-align: center;
+    color: var(--text-color);
+}
+
+#auth-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+#auth-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 16px;
+    font-family: var(--font-family);
+}
+
+#auth-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: var(--font-family);
+    transition: all 0.3s ease;
+}
+
+#auth-form button:hover {
+    background-color: var(--hover-color);
+    color: var(--background-color);
+}
