@@ -9,7 +9,7 @@ const SALT = "exo";
 
 // Функция для хэширования пароля с использованием SHA-256
 function hashPassword(password) {
-    return CryptoJS.SHA256(password).toString(CryptoJS.enc.Hex);
+    return CryptoJS.SHA256(password + SALT).toString(CryptoJS.enc.Hex);
 }
 
 // Функция для проверки авторизации
