@@ -31,7 +31,6 @@ function handleAuthFormSubmit(event) {
 
     // Хэшируем введённый пароль
     var hashedPassword = hashPassword(password);
-    console.log(hashedPassword);
 
     // Сравниваем логин и хэш пароля
     if (username === AUTH_USERNAME && hashedPassword === AUTH_PASSWORD_HASH) {
