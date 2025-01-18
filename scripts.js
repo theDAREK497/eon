@@ -9,7 +9,6 @@ const SALT = "exo";
 
 // Функция для хэширования пароля с использованием SHA-256
 function hashPassword(password) {
-    console.log(CryptoJS.SHA256(password + SALT).toString(CryptoJS.enc.Hex));
     return CryptoJS.SHA256(password + SALT).toString(CryptoJS.enc.Hex);
 }
 
@@ -31,7 +30,8 @@ function handleAuthFormSubmit(event) {
     const password = document.getElementById("password").value;
 
     // Хэшируем введённый пароль
-    const hashedPassword = hashPassword(password);
+    var hashedPassword = hashPassword(password);
+    console.log(hashedPassword);
 
     // Сравниваем логин и хэш пароля
     if (username === AUTH_USERNAME && hashedPassword === AUTH_PASSWORD_HASH) {
