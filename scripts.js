@@ -59,6 +59,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Функция для обновления таймера
 function updateCountdown() {
+    const timerElement = document.getElementById("timer");
+    if (!timerElement) {
+        return; // Если таймера нет, прекращаем выполнение
+    }
     const targetDate = new Date("2025-02-12T00:00:00"); // Дата 12 февраля 2024 года
     const now = new Date(); // Текущая дата и время
 
@@ -254,8 +258,8 @@ document.addEventListener("DOMContentLoaded", () => {
         updateCountdown(); // Первый запуск
         setInterval(updateCountdown, 1000); // Обновляем таймер каждую секунду
     } catch (error) {
-        
-    }    
+
+    }
 
     // Определяем, является ли текущая страница главной
     const isHomePage = document.body.classList.contains('home-page');
