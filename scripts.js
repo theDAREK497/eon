@@ -274,7 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Установка минимальной высоты main после загрузки header и footer
     Promise.all(loadPromises)
         .then(() => {
-            console.log('Header и Footer загружены.'); // Отладочное сообщение
+            //console.log('Header и Footer загружены.'); // Отладочное сообщение
             setMainMinHeight();
             window.addEventListener('resize', setMainMinHeight);
             initStyleSwitcher();
