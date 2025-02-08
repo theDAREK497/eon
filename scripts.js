@@ -59,52 +59,13 @@ function showLicensePopup() {
     popup.style.display = "block";
     textBlock.scrollTop = 0;
 
-    let isScrolling = false;
-
     textBlock.addEventListener("scroll", function () {
-        const scrollTop = textBlock.scrollTop;
-        const scrollHeight = textBlock.scrollHeight - textBlock.clientHeight;
-        const isAtBottom = textBlock.scrollTop + textBlock.clientHeight >= textBlock.scrollHeight - 5;
-
-        // Активация кнопки
-        if (isAtBottom) {
-            agreeButton.classList.add("active");
-            agreeButton.disabled = false;
-        } else {
-            agreeButton.classList.remove("active");
-            agreeButton.disabled = true;
-        }
-
-        // Замедление при приближении к концу
-        if (!isAtBottom && !isScrolling) {
-            const threshold = 0.8; // Начинаем замедление с 80% прогресса
-            if (scrollTop / scrollHeight > threshold) {
-                isScrolling = true;
-                const targetScroll = scrollHeight;
-                const duration = 1000; // Время анимации в мс
-                const startTime = Date.now();
-                const startScroll = scrollTop;
-
-                const animateScroll = () => {
-                    const elapsed = Date.now() - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const easeProgress = 1 - Math.pow(1 - progress, 3); // Кубическое замедление
-
-                    textBlock.scrollTop = Math.min(
-                        startScroll + (targetScroll - startScroll) * easeProgress,
-                        scrollHeight
-                    );
-
-                    if (progress < 1) {
-                        requestAnimationFrame(animateScroll);
-                    } else {
-                        isScrolling = false;
-                    }
-                };
-
-                requestAnimationFrame(animateScroll);
-            }
-        }
+        // Проверяем достигнут ли нижний край прокрутки
+        const isAtBottom = textBlock.scrollTop + textBlock.clientHeight >= textBlock.scrollHeight;
+        
+        // Активируем/деактивируем кнопку
+        agreeButton.disabled = !isAtBottom;
+        agreeButton.classList.toggle("active", isAtBottom);
     });
 
     agreeButton.addEventListener("click", function () {
