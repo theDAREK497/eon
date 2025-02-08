@@ -34,7 +34,7 @@ function handleAuthFormSubmit(event) {
 
     // Сравниваем логин и хэш пароля
     if (username === AUTH_USERNAME && hashedPassword === AUTH_PASSWORD_HASH) {
-        setCookie("auth", "true", 30); // Устанавливаем куки на 30 дней
+        setCookie("auth", "true", 365); // Устанавливаем куки на год
         window.location.href = "/eon/index.html"; // Перенаправляем на главную страницу
     } else {
         alert("Неверный логин или пароль");
@@ -49,10 +49,48 @@ function initAuthForm() {
     }
 }
 
+function showLicensePopup() {
+    if (getCookie("licenseAccepted")) return;
+
+    const popup = document.getElementById("license-popup");
+    const textBlock = document.getElementById("popup-text");
+    const agreeButton = document.getElementById("agree-button");
+
+    popup.style.display = "block";
+    textBlock.scrollTop = 0;
+
+    let scrollProgress = 0;
+    textBlock.addEventListener("scroll", function () {
+        let scrollTop = textBlock.scrollTop;
+        let scrollHeight = textBlock.scrollHeight - textBlock.clientHeight;
+        scrollProgress = scrollTop / scrollHeight;
+
+        let slowdownFactor = Math.max(1, 10 - scrollProgress * 10);
+        textBlock.style.scrollBehavior = `ease-out ${slowdownFactor}s`;
+
+        if (scrollProgress >= 1) {
+            agreeButton.classList.add("active");
+            agreeButton.disabled = false;
+        }
+    });
+
+    agreeButton.addEventListener("click", function () {
+        setCookie("licenseAccepted", "true", 3650);
+        popup.style.display = "none";
+    });
+}
+
 // Проверка авторизации при загрузке страницы
 document.addEventListener("DOMContentLoaded", () => {
     checkAuth();
     initAuthForm();
+
+    setDefaultStyle();
+    
+    try {
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    } catch (error) {}
 });
 
 //===========================================================================
