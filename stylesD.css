@@ -718,6 +718,7 @@ section ul li {
 /* Стили для попапа */
 .popup {
     position: fixed;
+    display: none;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
