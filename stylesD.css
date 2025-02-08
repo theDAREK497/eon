@@ -722,7 +722,7 @@ section ul li {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%;
+    width: 50%;
     max-width: 600px;
     background: var(--background-color);
     color: var(--text-color);
@@ -755,7 +755,7 @@ section ul li {
     background: var(--background-color);
     color: var(--text-color);
     border: 2px solid var(--primary-color);
-    padding: 15px;
+    padding: 10px;
     cursor: not-allowed;
 }
 
@@ -765,8 +765,6 @@ section ul li {
 }
 
 #popup-text {
-    max-height: 50vh; /* Динамическая высота */
-    overflow-y: auto;
-    padding-right: 8px; /* Для избежания резких скачков */
+    transition: scroll-behavior 0.5s ease-out;
 }
 /* ========================================================================= */

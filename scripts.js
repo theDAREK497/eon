@@ -53,7 +53,7 @@ function showLicensePopup() {
     if (getCookie("licenseAccepted")) return;
 
     const popup = document.getElementById("license-popup");
-    const textBlock = document.getElementById("popup-text");
+    const textBlock = document.getElementById("popup-content");
     const agreeButton = document.getElementById("agree-button");
 
     popup.style.display = "block";
