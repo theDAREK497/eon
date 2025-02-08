@@ -324,6 +324,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initAuthForm();
     try {
         updateCountdown(); // Первый запуск
+        showLicensePopup();
         setInterval(updateCountdown, 1000); // Обновляем таймер каждую секунду
     } catch (error) {
 
