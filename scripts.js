@@ -64,7 +64,7 @@ function showLicensePopup() {
     textBlock.addEventListener("scroll", function () {
         const scrollTop = textBlock.scrollTop;
         const scrollHeight = textBlock.scrollHeight - textBlock.clientHeight;
-        const isAtBottom = scrollTop + textBlock.clientHeight >= textBlock.scrollHeight - 1;
+        const isAtBottom = textBlock.scrollTop + textBlock.clientHeight >= textBlock.scrollHeight - 5;
 
         // Активация кнопки
         if (isAtBottom) {
@@ -90,7 +90,10 @@ function showLicensePopup() {
                     const progress = Math.min(elapsed / duration, 1);
                     const easeProgress = 1 - Math.pow(1 - progress, 3); // Кубическое замедление
 
-                    textBlock.scrollTop = startScroll + (targetScroll - startScroll) * easeProgress;
+                    textBlock.scrollTop = Math.min(
+                        startScroll + (targetScroll - startScroll) * easeProgress,
+                        scrollHeight
+                    );
 
                     if (progress < 1) {
                         requestAnimationFrame(animateScroll);
@@ -323,8 +326,8 @@ document.addEventListener("DOMContentLoaded", () => {
     checkAuth();
     initAuthForm();
     try {
-        updateCountdown(); // Первый запуск
         showLicensePopup();
+        updateCountdown(); // Первый запуск        
         setInterval(updateCountdown, 1000); // Обновляем таймер каждую секунду
     } catch (error) {
 
