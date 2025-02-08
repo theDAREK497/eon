@@ -732,7 +732,7 @@ section ul li {
 }
 
 .popup-content {
-    max-height: 300px;
+    max-height: 400px;
     overflow-y: auto;
     padding-right: 10px;
     scrollbar-color: var(--primary-color) var(--background-color);
@@ -743,6 +743,7 @@ section ul li {
     align-items: center;
     justify-content: space-between;
     margin-top: 10px;
+    flex-direction: column;
 }
 
 .popup-footer input {
