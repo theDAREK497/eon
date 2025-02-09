@@ -66,8 +66,8 @@ function showLicensePopup() {
         const isAtBottom = textBlock.scrollTop + textBlock.clientHeight >= textBlock.scrollHeight;
         
         // Активируем/деактивируем кнопку
-        agreeButton.disabled = !isAtBottom;
-        agreeButton.classList.toggle("active", isAtBottom);
+        /*agreeButton.disabled = !isAtBottom;
+        agreeButton.classList.toggle("active", isAtBottom);*/
     });
 
     agreeButton.addEventListener("click", function () {
