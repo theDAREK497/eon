@@ -49,6 +49,8 @@ function initAuthForm() {
     }
 }
 
+//===========================================================================
+
 function showLicensePopup() {
     if (getCookie("licenseAccepted")) return;
 
@@ -73,19 +75,6 @@ function showLicensePopup() {
         popup.style.display = "none";
     });
 }
-
-// Проверка авторизации при загрузке страницы
-document.addEventListener("DOMContentLoaded", () => {
-    checkAuth();
-    initAuthForm();
-
-    setDefaultStyle();
-    
-    try {
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-    } catch (error) {}
-});
 
 //===========================================================================
 
