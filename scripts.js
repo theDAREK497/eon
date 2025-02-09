@@ -191,7 +191,8 @@ function setStyle(styleName) {
         const isHomePage = document.body.classList.contains('home-page');
         const stylePath = isHomePage ? `${styleName}.css` : `../${styleName}.css`;
         styleLink.href = stylePath;
-        setCookie("selectedStyle", styleName, 30); // Сохраняем стиль в куки на 30 дней
+        showLicensePopup();
+        setCookie("selectedStyle", styleName, 365); // Сохраняем стиль в куки на 30 дней
     }
 }
 
