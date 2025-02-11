@@ -57,23 +57,26 @@ function showLicensePopup() {
     const popup = document.getElementById("license-popup");
     const textBlock = document.getElementById("popup-content");
     const agreeButton = document.getElementById("agree-button");
+    try {
+        popup.style.display = "block";
+        textBlock.scrollTop = 0;
 
-    popup.style.display = "block";
-    textBlock.scrollTop = 0;
+        textBlock.addEventListener("scroll", function () {
+            // Проверяем достигнут ли нижний край прокрутки
+            const isAtBottom = textBlock.scrollTop + textBlock.clientHeight >= textBlock.scrollHeight;
 
-    textBlock.addEventListener("scroll", function () {
-        // Проверяем достигнут ли нижний край прокрутки
-        const isAtBottom = textBlock.scrollTop + textBlock.clientHeight >= textBlock.scrollHeight;
-        
-        // Активируем/деактивируем кнопку
-        /*agreeButton.disabled = !isAtBottom;
-        agreeButton.classList.toggle("active", isAtBottom);*/
-    });
+            // Активируем/деактивируем кнопку
+            /*agreeButton.disabled = !isAtBottom;
+            agreeButton.classList.toggle("active", isAtBottom);*/
+        });
 
-    agreeButton.addEventListener("click", function () {
-        setCookie("licenseAccepted", "true", 3650);
-        popup.style.display = "none";
-    });
+        agreeButton.addEventListener("click", function () {
+            setCookie("licenseAccepted", "true", 3650);
+            popup.style.display = "none";
+        });
+    } catch (error) {
+
+    }
 }
 
 //===========================================================================
