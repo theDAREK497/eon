@@ -180,7 +180,6 @@ function setStyle(styleName) {
         const isHomePage = document.body.classList.contains('home-page');
         const stylePath = isHomePage ? `${styleName}.css` : `../${styleName}.css`;
         styleLink.href = stylePath;
-        showLicensePopup();
         setCookie("selectedStyle", styleName, 365); // Сохраняем стиль в куки на 30 дней
     }
 }
@@ -193,7 +192,6 @@ function setDefaultStyle() {
     } else {
         setStyle("stylesG"); // Устанавливаем стиль по умолчанию
     }
-    showLicensePopup();
 }
 
 //===========================================================================
