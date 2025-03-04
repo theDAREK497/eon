@@ -95,7 +95,7 @@ function updateCountdown() {
 
     // Если время вышло, останавливаем таймер
     if (timeDifference <= 0) {
-        document.getElementById("timer").innerHTML = "Время вышло!";
+        document.getElementById("timer").innerHTML = "Добро пожаловать, Капитан!";
         return;
     }
 
