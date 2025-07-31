@@ -87,7 +87,7 @@ function updateCountdown() {
     if (!timerElement) {
         return; // Если таймера нет, прекращаем выполнение
     }
-    const targetDate = new Date("2025-02-12T00:00:00"); // Дата 12 февраля 2024 года
+    const targetDate = new Date("2025-06-28T00:00:00");
     const now = new Date(); // Текущая дата и время
 
     // Разница между целевой датой и текущей датой (в миллисекундах)
