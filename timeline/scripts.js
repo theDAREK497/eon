@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", async () => {
+﻿document.addEventListener("DOMContentLoaded", async () => {
     const timelineItems = document.querySelectorAll(".timeline .year");
     const availableTimelineItems = document.querySelectorAll(".timeline .year:not(.error-404)");
     const eventsContainer = document.getElementById("events-container");
@@ -29,6 +29,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     function displayEvents(year) {
+        if (lockedYears.has(year)) {
+            eventsContainer.innerHTML = "<h3>Данные за этот год повреждены.</h3>";
+            return;
+        }
+
         const events = eventsData[year] || [];
         if (!events.length) {
             eventsContainer.innerHTML = "<h3>Событий за этот год нет.</h3>";
@@ -52,7 +57,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     await loadTimeline();
 
-    timelineItems.forEach(item => {
+    availableTimelineItems.forEach(item => {
         item.addEventListener("click", () => {
             timelineItems.forEach(year => year.classList.remove("active"));
             item.classList.add("active");

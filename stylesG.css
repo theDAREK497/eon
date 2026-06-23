@@ -1002,3 +1002,14 @@ nav ul li a[aria-current="page"] {
     background-color: var(--tertiary-color);
     color: var(--primary-color);
 }
+
+#event-filter option {
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+#event-filter option:checked,
+#event-filter option:hover {
+    color: var(--background-color);
+    background-color: var(--primary-color);
+}
