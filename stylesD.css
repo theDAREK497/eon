@@ -881,3 +881,12 @@ nav ul li a[aria-current="page"] {
         flex-wrap: wrap;
     }
 }
+
+/* Long labels in tab buttons */
+.tab-button,
+.inner-tab-button,
+.style-switcher .switch-button {
+    overflow-wrap: anywhere;
+    white-space: normal;
+    line-height: 1.35;
+}

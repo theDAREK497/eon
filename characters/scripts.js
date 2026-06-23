@@ -13,12 +13,22 @@ document.addEventListener("DOMContentLoaded", async () => {
             .replaceAll("'", "&#039;");
     }
 
+    function renderRichText(value) {
+        if (Array.isArray(value) && value.every(part => typeof part === "object" && part !== null && "text" in part)) {
+            return value.map(part => {
+                const text = escapeHTML(part.text);
+                return part.corrupted ? `<span class="error-404">${text}</span>` : text;
+            }).join("");
+        }
+        return escapeHTML(value);
+    }
+
     function renderField(label, value) {
-        if (Array.isArray(value)) {
+        if (Array.isArray(value) && !value.every(part => typeof part === "object" && part !== null && "text" in part)) {
             const items = value.map(item => `<li>${escapeHTML(item)}</li>`).join("");
             return `<p><strong>${escapeHTML(label)}:</strong></p><ul>${items}</ul>`;
         }
-        return `<p><strong>${escapeHTML(label)}:</strong> ${escapeHTML(value)}</p>`;
+        return `<p><strong>${escapeHTML(label)}:</strong> ${renderRichText(value)}</p>`;
     }
 
     function activateTab(id) {
@@ -27,6 +37,19 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
         contents.querySelectorAll(".tab-content").forEach(content => {
             content.classList.toggle("active", content.id === id);
+        });
+    }
+
+    function applyCorruptionMask(root) {
+        root.querySelectorAll(".error-404").forEach(block => {
+            const replaceTextWithBlocks = element => {
+                if (element.nodeType === Node.TEXT_NODE && element.textContent.trim() !== "") {
+                    element.textContent = "█".repeat(element.textContent.length);
+                } else if (element.nodeType === Node.ELEMENT_NODE) {
+                    Array.from(element.childNodes).forEach(replaceTextWithBlocks);
+                }
+            };
+            replaceTextWithBlocks(block);
         });
     }
 
@@ -50,6 +73,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 ${Object.entries(character.fields).map(([label, value]) => renderField(label, value)).join("")}
             </div>
         `).join("");
+
+        applyCorruptionMask(tabs);
+        applyCorruptionMask(contents);
 
         tabs.addEventListener("click", event => {
             const button = event.target.closest(".tab-button");
