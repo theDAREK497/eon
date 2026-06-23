@@ -1,4 +1,4 @@
-//===========================================================================
+﻿//===========================================================================
 
 // Логин и хэш пароля для авторизации
 const AUTH_USERNAME = "BlackHeart_2012";
@@ -271,6 +271,42 @@ function initBurgerMenu() {
     }
 }
 
+function initActiveNav() {
+    const normalizePath = path => {
+        const slashPath = path.replace(/\\/g, "/");
+        const indexedPath = slashPath.endsWith("/") ? slashPath + "index.html" : slashPath;
+        return indexedPath.replace(/^\/eon\//, "/");
+    };
+    const currentPath = normalizePath(window.location.pathname);
+    document.querySelectorAll("nav a").forEach(link => {
+        const linkPath = normalizePath(new URL(link.getAttribute("href"), window.location.href).pathname);
+        const isActive = currentPath === linkPath;
+        link.classList.toggle("active", isActive);
+        if (isActive) {
+            link.setAttribute("aria-current", "page");
+        } else {
+            link.removeAttribute("aria-current");
+        }
+    });
+}
+
+function initNavTooltips() {
+    document.querySelectorAll("nav ul li a").forEach(link => {
+        if (link.dataset.tooltipReady === "true") return;
+        link.dataset.tooltipReady = "true";
+        link.addEventListener("mouseenter", () => {
+            const tooltip = document.createElement("div");
+            tooltip.className = "tooltip";
+            tooltip.textContent = link.dataset.tooltip || "Нет данных";
+            document.body.appendChild(tooltip);
+            const rect = link.getBoundingClientRect();
+            tooltip.style.left = (rect.left + rect.width / 2 - tooltip.offsetWidth / 2) + "px";
+            tooltip.style.top = (rect.bottom + 5) + "px";
+        });
+        link.addEventListener("mouseleave", () => document.querySelector(".tooltip")?.remove());
+    });
+}
+
 //===========================================================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -280,7 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initAuthForm();
     try {
         showLicensePopup();
-        updateCountdown(); // Первый запуск        
+        updateCountdown(); // Первый запуск
         setInterval(updateCountdown, 1000); // Обновляем таймер каждую секунду
     } catch (error) {
 
@@ -304,6 +340,8 @@ document.addEventListener("DOMContentLoaded", () => {
             window.addEventListener('resize', setMainMinHeight);
             initStyleSwitcher();
             initBurgerMenu(); // Инициализация бургер-меню
+            initActiveNav();
+            initNavTooltips();
         })
         .catch(error => {
             console.error('Ошибка при загрузке header или footer:', error);
