@@ -890,3 +890,54 @@ nav ul li a[aria-current="page"] {
     white-space: normal;
     line-height: 1.35;
 }
+
+/* Timeline controls */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+#event-filter {
+    appearance: none;
+    -webkit-appearance: none;
+    min-width: min(100%, 300px);
+    padding: 10px 42px 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-color);
+    background-color: var(--inverse-text-color);
+    background-image:
+        linear-gradient(45deg, transparent 50%, var(--primary-color) 50%),
+        linear-gradient(135deg, var(--primary-color) 50%, transparent 50%);
+    background-position:
+        calc(100% - 22px) 50%,
+        calc(100% - 14px) 50%;
+    background-size: 8px 8px, 8px 8px;
+    background-repeat: no-repeat;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+    font-family: var(--font-family);
+    cursor: pointer;
+}
+
+#event-filter:hover,
+#event-filter:focus-visible {
+    outline: none;
+    border-color: var(--hover-color);
+    box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.28);
+}
+
+.timeline .year.error-404,
+.timeline .year.locked-year {
+    cursor: not-allowed;
+    user-select: none;
+    opacity: 0.62;
+}
+
+.timeline .year.error-404:hover,
+.timeline .year.locked-year:hover {
+    background-color: var(--primary-color);
+    color: var(--inverse-text-color);
+}

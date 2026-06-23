@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", async () => {
     const timelineItems = document.querySelectorAll(".timeline .year");
+    const availableTimelineItems = document.querySelectorAll(".timeline .year:not(.error-404)");
     const eventsContainer = document.getElementById("events-container");
     const filter = document.getElementById("event-filter");
     let eventsData = {};
+    const lockedYears = new Set(["2017", "2018", "2020", "2021", "2022", "2023", "2024"]);
 
     function escapeHTML(value) {
         return String(value)
@@ -65,5 +67,5 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
-    timelineItems[0]?.click();
+    availableTimelineItems[0]?.click();
 });

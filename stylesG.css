@@ -951,3 +951,54 @@ nav ul li a[aria-current="page"] {
     white-space: normal;
     line-height: 1.35;
 }
+
+/* Timeline controls */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+#event-filter {
+    appearance: none;
+    -webkit-appearance: none;
+    min-width: min(100%, 320px);
+    padding: 12px 44px 12px 16px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    background-image:
+        linear-gradient(45deg, transparent 50%, var(--primary-color) 50%),
+        linear-gradient(135deg, var(--primary-color) 50%, transparent 50%);
+    background-position:
+        calc(100% - 22px) 50%,
+        calc(100% - 14px) 50%;
+    background-size: 8px 8px, 8px 8px;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 10px var(--primary-color);
+    font-family: var(--font-family);
+    cursor: pointer;
+}
+
+#event-filter:hover,
+#event-filter:focus-visible {
+    outline: none;
+    background-color: var(--tertiary-color);
+    box-shadow: 0 0 16px var(--primary-color);
+}
+
+.timeline .year.error-404,
+.timeline .year.locked-year {
+    cursor: not-allowed;
+    user-select: none;
+    opacity: 0.72;
+}
+
+.timeline .year.error-404:hover,
+.timeline .year.locked-year:hover {
+    background-color: var(--tertiary-color);
+    color: var(--primary-color);
+}
